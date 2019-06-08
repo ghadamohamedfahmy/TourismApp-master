@@ -41,18 +41,18 @@ public class RestaurantDetails extends AppCompatActivity {
         Intent intent = getIntent();
         final Restaurant restaurant = (Restaurant)intent.getSerializableExtra("RESTAURANT_TRANSFER");
 
-       // Glide.with(getApplicationContext())
-           //     .load(restaurant.getImageUrl())
-             //   .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
-               // .apply(new RequestOptions()
-                 //       .error(R.drawable.broken_image))
-              //  .into(restaurantImage);
+       Glide.with(getApplicationContext())
+                .load(restaurant.getImageUrl())
+                .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
+                .apply(new RequestOptions()
+                        .error(R.drawable.broken_image))
+               .into(restaurantImage);
        // Toast.makeText(getApplicationContext(),restaurant.getAddress(),Toast.LENGTH_SHORT).show();
-       // address.setText( String.valueOf(restaurant.getAddress()));
-        //cuisines.setText(String.valueOf(restaurant.getCuisines()));
-        //openingHours.setText(String.valueOf(restaurant.getOpeningHours()));
-        //highlights.setText(String.valueOf(restaurant.getHighlights()));
-        //cost.setText(String.valueOf(restaurant.getCost()));
+       address.setText( String.valueOf(restaurant.getAddress()));
+        cuisines.setText(String.valueOf(restaurant.getCuisines()));
+        openingHours.setText(String.valueOf(restaurant.getOpeningHours()));
+        highlights.setText(String.valueOf(restaurant.getHighlights()));
+        cost.setText(String.valueOf(restaurant.getCost()));
 
         /*if(restaurant.getMenuImages()!=null)
         {

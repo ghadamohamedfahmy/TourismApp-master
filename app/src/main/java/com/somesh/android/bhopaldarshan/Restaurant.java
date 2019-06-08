@@ -30,23 +30,16 @@ public class Restaurant implements Serializable {
     }
 
 
-  /*  String address;
+  String address;
     String cuisines;
     String imageUrl;
     String openingHours;
     String highlights;
-    String cost;
+
     List<String> menuImages;
     String latitude;
     String longitude;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getAddress() {
         return address;
@@ -88,15 +81,7 @@ public class Restaurant implements Serializable {
         this.highlights = highlights;
     }
 
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public String getLatitude() {
+        public String getLatitude() {
         return latitude;
     }
 
@@ -118,5 +103,5 @@ public class Restaurant implements Serializable {
 
     public void setMenuImages(List<String> menuImages) {
         this.menuImages = menuImages;
-    }*/
+    }
 }

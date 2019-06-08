@@ -41,14 +41,14 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.MyViewH
     public void onBindViewHolder(RestaurantsAdapter.MyViewHolder holder, final int position) {
         // set the data in items
         Restaurant restaurant =mRestaurants.get(position);
-      //holder.placeTitle.setText(restaurant.getTitle());
+      holder.placeTitle.setText(restaurant.getTitle());
 
-        //Glide.with(context)
-            //    .load(restaurant.getImageUrl())
-              //  .thumbnail(Glide.with(context).load(R.drawable.giphy))
-                //.apply(new RequestOptions()
-                //.error(R.drawable.broken_image))
-                //.into(holder.placeImage);
+        Glide.with(context)
+                .load(restaurant.getImageUrl())
+                .thumbnail(Glide.with(context).load(R.drawable.giphy))
+                .apply(new RequestOptions()
+                .error(R.drawable.broken_image))
+                .into(holder.placeImage);
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView placeTitle;

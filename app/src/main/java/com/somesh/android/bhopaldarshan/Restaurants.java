@@ -76,27 +76,26 @@ public class Restaurants extends AppCompatActivity implements RestaurantsListene
     }
 
     public void loadData(DataSnapshot dataSnapshot) {
-        Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
-        Iterator myVeryOwnIterator = data.keySet().iterator();
-        while (myVeryOwnIterator.hasNext()) {
-            String key = String.valueOf(myVeryOwnIterator.next());
-            String value = String.valueOf(data.get(key));
-            //adaaapter as = new adaaapter( data);
-            //simpleList.setAdapter(as);
+        // Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+        //Iterator myVeryOwnIterator = data.keySet().iterator();
+        //while (myVeryOwnIterator.hasNext()) {
+        // String key = String.valueOf(myVeryOwnIterator.next());
+        // String value = String.valueOf(data.get(key));
+        //adaaapter as = new adaaapter( data);
+        //simpleList.setAdapter(as);
 
-            progressBar.setVisibility(View.INVISIBLE);
-
-            //  Toast.makeText(getApplicationContext(), "Key: "+key+" Value: "+value, Toast.LENGTH_LONG).show();
-        }
-    }
-       // Restaurant restaurant=dataSnapshot.getValue(Restaurant.class);
-        //mRestaurants.add(restaurant);
-        //myAdapter = new RestaurantsAdapter(Restaurants.this, mRestaurants);
-        //GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        //myRecyclerView.setLayoutManager(gridLayoutManager);
-        //myRecyclerView.setAdapter(myAdapter);
         //progressBar.setVisibility(View.INVISIBLE);
 
+        //  Toast.makeText(getApplicationContext(), "Key: "+key+" Value: "+value, Toast.LENGTH_LONG).show();
+        //}
+         Restaurant restaurant=dataSnapshot.getValue(Restaurant.class);
+        mRestaurants.add(restaurant);
+        myAdapter = new RestaurantsAdapter(Restaurants.this, mRestaurants);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        myRecyclerView.setLayoutManager(gridLayoutManager);
+        myRecyclerView.setAdapter(myAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     public void onItemClick(View view, int postition) {
