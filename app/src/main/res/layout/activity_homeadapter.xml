@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+   >
+
+
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/homeimage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/album_cover_height"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/placeholder"
+                />
+
+
+            <TextView
+                android:id="@+id/hometitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/homeimage"
+                android:paddingBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49dp"
+                    android:layout_marginTop="205dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="0 Rate"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="205dp"
+                    android:layout_marginLeft="210dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="0 Comments"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                   />
+
+
+            </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="275dp"
+            android:layout_marginTop="200dp"
+
+
+            android:src="@drawable/ic_mr_button_grey" />
+
+        <ImageView
+            android:id="@+id/imagerate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginTop="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
+        </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

@@ -37,7 +37,7 @@ public class Restaurants extends AppCompatActivity implements RestaurantsListene
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("restaurants").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

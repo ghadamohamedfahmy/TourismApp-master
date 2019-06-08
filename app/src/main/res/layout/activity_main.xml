@@ -7,109 +7,146 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="25dp"
-    android:background="@color/colorPrimaryDark">
+    tools:context=".MainActivity">
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="519dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <android.support.constraint.ConstraintLayout
+<ProgressBar
+    android:id="@+id/progress_bar"
+    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingLeft="60dp"
+    android:paddingRight="60dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/restaurant_button"
-                android:layout_width="wrap_content"
-                android:layout_height="241dp"
-                android:background="@null"
-                android:onClick="buttonFunction"
-                android:scaleType="fitXY"
-                android:src="@drawable/r"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/restaurant_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:clickable="false"
-                android:text="Restaurants"
-                android:textColor="@android:color/background_light"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/restaurant_button"/>
+            <EditText
+                android:id="@+id/usrusr"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="15dp"
+                android:background="#00000000"
+                android:hint="username"
+                android:inputType="text"
+                android:letterSpacing="0.1"
+                android:text="@string/email"
+                android:textColor="#fff"
+                android:textColorHint="#d9e5f3"
+                android:textSize="16dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#4a5a71"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/temple_button"
-                android:layout_width="0dp"
-                android:layout_height="241dp"
-                android:layout_marginTop="16dp"
-                android:background="@null"
-                android:onClick="clickFunction"
-                android:scaleType="fitXY"
-                android:src="@drawable/t"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/restaurant_text"/>
 
-            <TextView
-                android:id="@+id/temple_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:clickable="false"
-                android:text="Temples"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/temple_button"
-                android:textColor="@android:color/background_light"/>
+            <EditText
+                android:id="@+id/pswrdd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="15dp"
+                android:background="#00000000"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:letterSpacing="0.1"
+                android:text="@string/pass"
+                android:textColor="#fff"
+                android:textColorHint="#d9e5f3"
+                android:textSize="16dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#4a5a71"></LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 
-            <ImageButton
-                android:id="@+id/visting_place_button"
-                android:layout_width="0dp"
-                android:layout_height="242dp"
-                android:layout_marginTop="16dp"
-                android:background="@null"
-                android:onClick="buttonClickFunction"
-                android:scaleType="fitXY"
-                android:src="@drawable/v"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/temple_text"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/back"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="60dp"
+    android:paddingRight="60dp">
 
-            <TextView
-                android:id="@+id/visting_place_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:clickable="false"
-                android:text="Visiting Places"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/visting_place_button"
-                android:textColor="@android:color/background_light"/>
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:background="#009a9a"
+        android:gravity="center"
+        android:letterSpacing="0.2"
+        android:padding="16dp"
+        android:text="Login"
+        android:textColor="#d9e5f3"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:background="#009a9a"
+        android:gravity="center"
+        android:letterSpacing="0.2"
+        android:padding="16dp"
+        android:text="@string/signgmail"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.1"
+        android:text="Create Account ? Signup"
+        android:textColor="#d9e5f3" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="439dp"
+    android:layout_marginBottom="400dp"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="277dp"
+        android:layout_height="77dp"
+        android:background="@drawable/logo"
+        />
+</LinearLayout>
+</RelativeLayout>
 </android.support.constraint.ConstraintLayout>

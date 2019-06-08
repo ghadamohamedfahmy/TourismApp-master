@@ -86,15 +86,15 @@ public class RestaurantDetails extends AppCompatActivity {
 
         mapButton=findViewById(R.id.mapButton);
 
-        //mapButton.setOnClickListener(new View.OnClickListener() {
-           // @Override
-         //   public void onClick(View view) {
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View view) {
 
-                //Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
-               // intent.putExtra("LAT",Double.valueOf(restaurant.getLatitude()));
-                //intent.putExtra("LNG",Double.valueOf(restaurant.getLongitude()));
-                //startActivity(intent);            }
-       // });
+                Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("LAT",Double.valueOf(restaurant.getLatitude()));
+                intent.putExtra("LNG",Double.valueOf(restaurant.getLongitude()));
+                startActivity(intent);            }
+       });
     }
 
 }
