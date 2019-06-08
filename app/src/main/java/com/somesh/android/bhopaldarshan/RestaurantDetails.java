@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
 
 public class RestaurantDetails extends AppCompatActivity {
 
@@ -40,13 +41,16 @@ public class RestaurantDetails extends AppCompatActivity {
         linearLayout=findViewById(R.id.linearlayout);
         Intent intent = getIntent();
         final Restaurant restaurant = (Restaurant)intent.getSerializableExtra("RESTAURANT_TRANSFER");
+        Picasso.with(getApplicationContext())
+                .load(restaurant.getImageUrl())
 
-       Glide.with(getApplicationContext())
+                .into(restaurantImage);
+       /*Glide.with(getApplicationContext())
                 .load(restaurant.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
-               .into(restaurantImage);
+               .into(restaurantImage);*/
        // Toast.makeText(getApplicationContext(),restaurant.getAddress(),Toast.LENGTH_SHORT).show();
        address.setText( String.valueOf(restaurant.getAddress()));
         cuisines.setText(String.valueOf(restaurant.getCuisines()));
@@ -54,18 +58,22 @@ public class RestaurantDetails extends AppCompatActivity {
         highlights.setText(String.valueOf(restaurant.getHighlights()));
         cost.setText(String.valueOf(restaurant.getCost()));
 
-        /*if(restaurant.getMenuImages()!=null)
+        if(restaurant.getMenuImages()!=null)
         {
             for(String menuImage:restaurant.getMenuImages())
             {
                 ImageView currentImage = new ImageView(this);
                 linearLayout.addView(currentImage);
-                Glide.with(getApplicationContext())
+                Picasso.with(getApplicationContext())
+                        .load(menuImage)
+
+                        .into(currentImage);
+               /* Glide.with(getApplicationContext())
                     .load(menuImage)
                     .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                     .apply(new RequestOptions()
                             .error(R.drawable.broken_image))
-                    .into(currentImage);
+                    .into(currentImage);*/
             }
         }else {
             TextView tv=new TextView(this);
@@ -75,7 +83,7 @@ public class RestaurantDetails extends AppCompatActivity {
             linearLayout.addView(tv);
         }
 
-*/
+
         mapButton=findViewById(R.id.mapButton);
 
         //mapButton.setOnClickListener(new View.OnClickListener() {
