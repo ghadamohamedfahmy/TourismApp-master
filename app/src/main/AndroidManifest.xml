@@ -15,7 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adaaapter"></activity>
+        <activity android:name=".homeadapter"></activity>
+        <activity android:name=".login" />
+        <activity android:name=".adaaapter" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

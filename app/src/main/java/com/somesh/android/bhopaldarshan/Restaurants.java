@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -84,8 +85,8 @@ public class Restaurants extends AppCompatActivity implements RestaurantsListene
          Restaurant restaurant=dataSnapshot.getValue(Restaurant.class);
         mRestaurants.add(restaurant);
         myAdapter = new RestaurantsAdapter(Restaurants.this, mRestaurants);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        myRecyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        myRecyclerView.setLayoutManager(linearLayoutManager);
         myRecyclerView.setAdapter(myAdapter);
         progressBar.setVisibility(View.INVISIBLE);
     }
