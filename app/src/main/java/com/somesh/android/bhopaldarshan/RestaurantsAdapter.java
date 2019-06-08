@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -43,16 +44,15 @@ class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.MyViewH
         // set the data in items
         Restaurant restaurant =mRestaurants.get(position);
       holder.placeTitle.setText(restaurant.getTitle());
-       Picasso.with(context)
-                .load(restaurant.getImageUrl())
-
-                .into(holder.placeImage);
-       /*Glide.with(context)
+       // Picasso.with(context).load(restaurant.getImageUrl()).into(holder.placeImage);
+        Toast.makeText(context, restaurant.getImageUrl(), Toast.LENGTH_LONG).show();
+        Glide.with(context)
                 .load(restaurant.getImageUrl())
                 .thumbnail(Glide.with(context).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                 .error(R.drawable.broken_image))
-                .into(holder.placeImage);*/
+                .into(holder.placeImage);
+
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView placeTitle;
