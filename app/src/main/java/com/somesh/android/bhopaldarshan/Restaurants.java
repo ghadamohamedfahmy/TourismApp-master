@@ -37,7 +37,7 @@ public class Restaurants extends AppCompatActivity implements RestaurantsListene
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("restaurants").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -76,15 +76,8 @@ public class Restaurants extends AppCompatActivity implements RestaurantsListene
     }
 
     public void loadData(DataSnapshot dataSnapshot) {
-        // Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
-        //Iterator myVeryOwnIterator = data.keySet().iterator();
-        //while (myVeryOwnIterator.hasNext()) {
-        // String key = String.valueOf(myVeryOwnIterator.next());
-        // String value = String.valueOf(data.get(key));
-        //adaaapter as = new adaaapter( data);
-        //simpleList.setAdapter(as);
 
-        //progressBar.setVisibility(View.INVISIBLE);
+
 
         //  Toast.makeText(getApplicationContext(), "Key: "+key+" Value: "+value, Toast.LENGTH_LONG).show();
         //}
