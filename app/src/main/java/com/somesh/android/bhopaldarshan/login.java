@@ -9,6 +9,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,6 +51,35 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                loadData(dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                loadData(dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mDatabase.child("Alex").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -152,8 +182,8 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
         Restaurant home=dataSnapshot.getValue(Restaurant.class);
         mhome.add(home);
         myAdapter = new homeadapter(login.this, mhome);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        myRecyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        myRecyclerView.setLayoutManager(linearLayoutManager);
         myRecyclerView.setAdapter(myAdapter);
         mProgressCircle.setVisibility(View.INVISIBLE);
     }
