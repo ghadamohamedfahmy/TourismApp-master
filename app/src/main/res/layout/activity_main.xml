@@ -46,13 +46,17 @@ android:layout_height="match_parent">
                 android:layout_height="32dp"
                 android:layout_marginLeft="15dp"
                 android:background="#00000000"
-                android:hint="username"
+
+                android:hint="@string/enteremail"
                 android:inputType="text"
+
+
                 android:letterSpacing="0.1"
                 android:text="@string/email"
-                android:textColor="#fff"
+                android:textColor="@color/cast_expanded_controller_background_color"
                 android:textColorHint="#d9e5f3"
-                android:textSize="16dp" />
+                android:textSize="36sp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,13 +75,13 @@ android:layout_height="match_parent">
                 android:layout_height="35dp"
                 android:layout_marginLeft="15dp"
                 android:background="#00000000"
-                android:hint="Password"
+
                 android:inputType="textPassword"
                 android:letterSpacing="0.1"
                 android:text="@string/pass"
-                android:textColor="#fff"
+                android:textColor="@color/cast_expanded_controller_background_color"
                 android:textColorHint="#d9e5f3"
-                android:textSize="16dp" />
+                android:textSize="30dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,55 +90,55 @@ android:layout_height="match_parent">
     </LinearLayout>
 </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="20dp"
-    android:background="@drawable/back"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:paddingLeft="60dp"
-    android:paddingRight="60dp">
-
-    <Button
-        android:id="@+id/login"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="50dp"
-        android:background="#009a9a"
-        android:gravity="center"
-        android:letterSpacing="0.2"
-        android:padding="16dp"
-        android:text="Login"
-        android:textColor="#d9e5f3"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/back"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
 
-    <Button
-        android:id="@+id/button2"
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
+            android:background="#009a9a"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:padding="16dp"
+            android:text="Login"
+            android:textColor="#d9e5f3"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
 
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="50dp"
-        android:background="#009a9a"
-        android:gravity="center"
-        android:letterSpacing="0.2"
-        android:padding="16dp"
-        android:text="@string/signgmail"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
+            android:background="#009a9a"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:padding="16dp"
+            android:text="@string/signgmail"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/sup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:letterSpacing="0.1"
-        android:text="Create Account ? Signup"
-        android:textColor="#d9e5f3" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/sup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:text="Create Account ? Signup"
+            android:textColor="#d9e5f3" />
+    </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
