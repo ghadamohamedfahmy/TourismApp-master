@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class RestaurantDetails extends AppCompatActivity {
     ImageView restaurantImage;
 
     Button mapButton;
-
+    ImageButton mvideoButton;
     LinearLayout linearLayout;
 
     @Override
@@ -37,6 +38,7 @@ public class RestaurantDetails extends AppCompatActivity {
         openingHours=findViewById(R.id.drop3);
         highlights=findViewById(R.id.drop4);
         cost=findViewById(R.id.drop5);
+
         restaurantImage=findViewById(R.id.imageView);
         linearLayout=findViewById(R.id.linearlayout);
         Intent intent = getIntent();
@@ -91,10 +93,22 @@ public class RestaurantDetails extends AppCompatActivity {
            public void onClick(View view) {
 
                 Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
+
                 intent.putExtra("LAT",Double.valueOf(restaurant.getLatitude()));
                 intent.putExtra("LNG",Double.valueOf(restaurant.getLongitude()));
                 startActivity(intent);            }
        });
+        mvideoButton=findViewById(R.id.videoButton);
+        mvideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent= new Intent(getApplicationContext(),showvideo.class);
+
+
+                startActivity(intent);            }
+        });
     }
 
 }
+

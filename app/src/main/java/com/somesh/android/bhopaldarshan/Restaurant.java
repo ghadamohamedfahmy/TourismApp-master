@@ -37,9 +37,9 @@ public class Restaurant implements Serializable {
     String highlights;
 
     List<String> menuImages;
+
     String latitude;
     String longitude;
-
 
     public String getAddress() {
         return address;

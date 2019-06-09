@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="8dp"
-   >
+    android:layout_height="wrap_content"
+    android:background="#2D055E53"
+
+    android:orientation="vertical">
 
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:background="#9700796B"
+        android:elevation="3dp">
 
-
-    <RelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#A400796B">
 
             <ImageView
                 android:id="@+id/homeimage"
@@ -22,8 +30,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/placeholder"
-                />
+                android:src="@drawable/placeholder" />
 
 
             <TextView
@@ -33,61 +40,66 @@
                 android:layout_below="@id/homeimage"
                 android:paddingBottom="10dp"
                 android:textAlignment="center"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/album_cover_height"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/like"
+                    android:id="@+id/rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="49dp"
                     android:layout_marginTop="205dp"
                     android:layout_marginBottom="8dp"
+                    android:hint="@string/retrievepass"
                     android:text="0 Rate"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/cardview_dark_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="@string/enteremail" />
 
 
                 <TextView
                     android:id="@+id/comments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="180dp"
                     android:layout_marginTop="205dp"
-                    android:layout_marginLeft="210dp"
                     android:layout_marginBottom="80dp"
+                    android:hint="@string/retrievepass"
                     android:text="0 Comments"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                   />
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
 
             </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/comment"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="275dp"
-            android:layout_marginTop="200dp"
+            <ImageButton
+                android:id="@+id/comment"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="225dp"
+                android:layout_marginTop="200dp"
 
 
-            android:src="@drawable/ic_mr_button_grey" />
+                android:src="@drawable/ic_mr_button_grey" />
 
-        <ImageView
-            android:id="@+id/imagerate"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
+            <ImageView
+                android:id="@+id/imagerate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
 
-            android:layout_marginTop="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
 
-            app:srcCompat="@mipmap/ic_launcher_foreground" />
+                app:srcCompat="@mipmap/ic_launcher_foreground" />
         </RelativeLayout>
 
+    </android.support.v7.widget.CardView>
 
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

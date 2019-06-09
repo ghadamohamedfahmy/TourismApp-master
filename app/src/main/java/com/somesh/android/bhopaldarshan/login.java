@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +24,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +38,9 @@ import java.util.Map;
 
 public class login extends AppCompatActivity implements home_listener.OnReclyclerClickListener {
     private Spinner spinner;
-    private ImageButton button;
+    private ImageButton button,logout;
     private ProgressBar mProgressCircle;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
     NetworkInfo netInfo;
     ListView simpleList;
     RecyclerView myRecyclerView;
@@ -118,7 +123,10 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new home_listener(this,myRecyclerView,this));
         simpleList=findViewById(R.id.simpleListView);
+        logout = findViewById(R.id.logout);
 
+
+        setupFirebaseListener();
         // button = findViewById(R.id.selectcategory);
         List<String> categories = new ArrayList<>();
         categories.add(0, "Choose Category");
@@ -132,7 +140,6 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
         dataAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         //Dropdown layout style
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         //attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -176,8 +183,54 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
             }
         });
 
+logout.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Log.d(TAG, "onClick: attempting to sign out the user.");
+        FirebaseAuth.getInstance().signOut(); }
+});
+    }
+
+    private void setupFirebaseListener() {
+        Log.d(TAG, "setupFirebaseListener: setting up the auth state listener.");
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
+                }else{
+                    Log.d(TAG, "onAuthStateChanged: signed_out");
+                    Toast.makeText(getApplicationContext(), "Signed out", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(login.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
+        };
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(mAuthStateListener != null){
+            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }}
+
+  /*  private void signOut() {
+
+            auth.signOut();
+// this listener will be called when there is change in firebase user session
+
+        }*/
+
+
     public void loadData(DataSnapshot dataSnapshot) {
         Restaurant home=dataSnapshot.getValue(Restaurant.class);
         mhome.add(home);
@@ -207,6 +260,7 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
             startActivity(intent);
         }
     }
+
   /*  public void OpenActivity_arts(){
         //// Intent intent= new Intent(this,activity_.class);
         Intent intent= new Intent (this,cairo.class);

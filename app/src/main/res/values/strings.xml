@@ -8,6 +8,7 @@
     <string name="signgmail">Sign IN Gmail </string>
     <string name="login">login </string>
     <string name="signup">Sign Up </string>
+    <string name="playvedio"> Show Video </string>
     <string name="enteremail">Enter Email </string>
     <string name="already_have_account">/Already have Account </string>
     <string name="retrievepass">Enter Password again </string>

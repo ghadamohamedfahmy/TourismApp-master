@@ -15,7 +15,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register"></activity>
+        <activity android:name=".showvideo"></activity>
+        <activity android:name=".Register" />
         <activity android:name=".homeadapter" />
         <activity android:name=".login" />
         <activity android:name=".adaaapter" />
