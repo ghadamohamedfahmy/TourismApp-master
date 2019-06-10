@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder>{
-    List<Get_Data_Cairo> mGetDataCairos;
+    List<GetData> mGetDataCairos;
     Context context;
 
     public CairoAdapter(Context context, List templeList) {
@@ -40,7 +40,7 @@ public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(CairoAdapter.MyViewHolder holder, final int position) {
         // set the data in items
-        Get_Data_Cairo getDataCairo = mGetDataCairos.get(position);
+        GetData getDataCairo = mGetDataCairos.get(position);
         holder.placeTitle.setText(getDataCairo.getTitle());
         // loading album cover using Glide library
         Glide.with(context)
@@ -61,7 +61,7 @@ public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder
         }
     }
 
-    public Get_Data_Cairo getTemple(int position) {
+    public GetData getTemple(int position) {
         return mGetDataCairos.get(position);
     }
 }

@@ -8,18 +8,18 @@ import java.util.List;
  */
 
 public class GetData implements Serializable {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     String title;
-    String cost;
+    String about;
+    String address;
+    String latitude;
+    String longitude;
+    String imageUrl;
+    String rate;
+    String websities;
+    String comments;
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public String getCost() {
-        return cost;
-    }
 
     public String getTitle() {
         return title;
@@ -29,17 +29,21 @@ public class GetData implements Serializable {
         this.title = title;
     }
 
+    public void setAbout(String about) {   this.about = about;}
 
-  String address;
-    String cuisines;
-    String imageUrl;
-    String openingHours;
-    String highlights;
+    public void setRate(String rate) {  this.rate = rate;  }
 
-    List<String> menuImages;
+    public String getRate() { return rate; }
 
-    String latitude;
-    String longitude;
+    public void setWebsities(String websities) { this.websities = websities; }
+
+    public String getWebsities() { return websities; }
+
+    public void setComments(String comments) { this.comments = comments; }
+
+    public String getComments() {return comments;}
+
+    public String getAbout() { return about; }
 
     public String getAddress() {
         return address;
@@ -47,14 +51,6 @@ public class GetData implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCuisines() {
-        return cuisines;
-    }
-
-    public void setCuisines(String cuisines) {
-        this.cuisines = cuisines;
     }
 
     public String getImageUrl() {
@@ -65,23 +61,7 @@ public class GetData implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public String getOpeningHours() {
-        return openingHours;
-    }
-
-    public void setOpeningHours(String openingHours) {
-        this.openingHours = openingHours;
-    }
-
-    public String getHighlights() {
-        return highlights;
-    }
-
-    public void setHighlights(String highlights) {
-        this.highlights = highlights;
-    }
-
-        public String getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
@@ -97,11 +77,4 @@ public class GetData implements Serializable {
         this.longitude = longitude;
     }
 
-    public List<String> getMenuImages() {
-        return menuImages;
-    }
-
-    public void setMenuImages(List<String> menuImages) {
-        this.menuImages = menuImages;
-    }
 }

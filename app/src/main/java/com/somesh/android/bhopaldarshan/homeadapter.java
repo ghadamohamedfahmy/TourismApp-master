@@ -40,7 +40,7 @@ public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position
         GetData home =mhome.get(position);
         holder.placeTitle.setText(home.getTitle());
         // Picasso.with(context).load(restaurant.getImageUrl()).into(holder.placeImage);
-        Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
         .load(home.getImageUrl())
         .thumbnail(Glide.with(context).load(R.drawable.giphy))

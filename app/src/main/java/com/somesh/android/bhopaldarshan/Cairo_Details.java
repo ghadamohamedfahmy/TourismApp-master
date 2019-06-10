@@ -13,9 +13,9 @@ import com.bumptech.glide.request.RequestOptions;
 
 public class Cairo_Details extends AppCompatActivity {
 
-    TextView address,openingHours,about;
+    TextView address,about,rate,websites,comments;
 
-    ImageView templeImage;
+    ImageView CairoImage;
 
     Button mapButton;
 
@@ -25,23 +25,28 @@ public class Cairo_Details extends AppCompatActivity {
         setContentView(R.layout.cairo_details);
 
         address=findViewById(R.id.drop1);
-        openingHours=findViewById(R.id.drop2);
         about=findViewById(R.id.drop3);
+        rate=findViewById(R.id.drop2);
+        comments=findViewById(R.id.drop5);
+        websites=findViewById(R.id.drop4);
 
-        templeImage=findViewById(R.id.imageView);
+
+        CairoImage=findViewById(R.id.imageView);
 
         Intent intent = getIntent();
-        final Get_Data_Cairo getDataCairo = (Get_Data_Cairo)intent.getSerializableExtra("TEMPLE_TRANSFER");
+        final GetData getDataCairo = (GetData)intent.getSerializableExtra("CAIRO_TRANSFER");
 
         Glide.with(getApplicationContext())
                 .load(getDataCairo.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
-                .into(templeImage);
+                .into(CairoImage);
         address.setText(getDataCairo.getAddress());
-        openingHours.setText(getDataCairo.getOpeningHours());
         about.setText(getDataCairo.getAbout());
+        rate.setText(getDataCairo.getRate());
+        comments.setText(getDataCairo.getComments());
+        websites.setText(getDataCairo.getWebsities());
 
         mapButton=(Button) findViewById(R.id.mapButton);
 

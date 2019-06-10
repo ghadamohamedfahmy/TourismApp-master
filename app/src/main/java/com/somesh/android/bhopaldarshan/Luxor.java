@@ -32,7 +32,7 @@ public class Luxor extends AppCompatActivity implements Luxor_Listener.OnReclycl
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Luxor").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Luxor").orderByChild("rate").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

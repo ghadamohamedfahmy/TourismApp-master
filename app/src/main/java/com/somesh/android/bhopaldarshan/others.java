@@ -32,7 +32,7 @@ public class others extends AppCompatActivity implements Others_Listener.OnRecly
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Others").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Others").orderByChild("rate").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

@@ -19,7 +19,7 @@ import java.util.List;
 
 class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
 
-    List<Get_Data_Aswan> aswanlist;
+    List<GetData> aswanlist;
     Context context;
 
     public AswanAdapter(Context context, List aswanlist) {
@@ -42,7 +42,7 @@ class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         // set the data in items
         //holder.placeTitle.setText((Integer) aswanlist.get(position));
-        Get_Data_Aswan getDataAswan = aswanlist.get(position);
+        GetData getDataAswan = aswanlist.get(position);
         holder.placeTitle.setText(getDataAswan.getTitle());
         // loading album cover using Glide library
         Glide.with(context)
@@ -63,7 +63,7 @@ class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
         }
     }
 
-    public Get_Data_Aswan getVistingPlace(int position) {
+    public GetData getVistingPlace(int position) {
         return aswanlist.get(position);
     }
 }

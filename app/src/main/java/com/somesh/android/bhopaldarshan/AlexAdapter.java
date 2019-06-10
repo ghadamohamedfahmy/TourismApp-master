@@ -22,9 +22,9 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
     List<GetData> mGetData;
     Context context;
 
-    public AlexAdapter(Context context, List restaurantList) {
+    public AlexAdapter(Context context, List data) {
         this.context=context;
-        this.mGetData = restaurantList;
+        this.mGetData = data;
     }
     @Override
     public int getItemCount() {
@@ -44,7 +44,7 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
         GetData getData = mGetData.get(position);
       holder.placeTitle.setText(getData.getTitle());
        // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
-        Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
                 .load(getData.getImageUrl())
                 .thumbnail(Glide.with(context).load(R.drawable.giphy))
@@ -64,7 +64,7 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
         }
     }
 
-    public GetData getRestaurant(int position) {
+    public GetData getAlexData(int position) {
         return mGetData.get(position);
     }
 }

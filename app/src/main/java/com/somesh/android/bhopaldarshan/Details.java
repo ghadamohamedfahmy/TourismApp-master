@@ -17,7 +17,7 @@ public class Details extends AppCompatActivity {
 
     private static final String TAG = "Details";
 
-    TextView address,cuisines,openingHours,highlights,cost;
+    TextView address,about,rate,websites,comments;
 
     ImageView AlexImage;
 
@@ -31,10 +31,10 @@ public class Details extends AppCompatActivity {
         setContentView(R.layout.alex_details);
 
         address=findViewById(R.id.drop1);
-        cuisines=findViewById(R.id.drop2);
-        openingHours=findViewById(R.id.drop3);
-        highlights=findViewById(R.id.drop4);
-        cost=findViewById(R.id.drop5);
+        about=findViewById(R.id.drop3);
+        rate=findViewById(R.id.drop2);
+        comments=findViewById(R.id.drop5);
+        websites=findViewById(R.id.drop4);
 
         AlexImage =findViewById(R.id.imageView);
         linearLayout=findViewById(R.id.linearlayout);
@@ -51,38 +51,11 @@ public class Details extends AppCompatActivity {
                         .error(R.drawable.broken_image))
                .into(AlexImage);*/
        // Toast.makeText(getApplicationContext(),getData.getAddress(),Toast.LENGTH_SHORT).show();
-       address.setText( String.valueOf(getData.getAddress()));
-        cuisines.setText(String.valueOf(getData.getCuisines()));
-        openingHours.setText(String.valueOf(getData.getOpeningHours()));
-        highlights.setText(String.valueOf(getData.getHighlights()));
-        cost.setText(String.valueOf(getData.getCost()));
-
-        if(getData.getMenuImages()!=null)
-        {
-            for(String menuImage: getData.getMenuImages())
-            {
-                ImageView currentImage = new ImageView(this);
-                linearLayout.addView(currentImage);
-                Picasso.with(getApplicationContext())
-                        .load(menuImage)
-
-                        .into(currentImage);
-               /* Glide.with(getApplicationContext())
-                    .load(menuImage)
-                    .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
-                    .apply(new RequestOptions()
-                            .error(R.drawable.broken_image))
-                    .into(currentImage);*/
-            }
-        }else {
-            TextView tv=new TextView(this);
-            tv.setTextSize(24);
-            tv.setTextColor(Color.WHITE);
-            tv.setText("Sorry no Menu right now !");
-            linearLayout.addView(tv);
-        }
-
-
+        address.setText(getData.getAddress());
+        about.setText(getData.getAbout());
+        rate.setText(getData.getRate());
+        comments.setText(getData.getComments());
+        websites.setText(getData.getWebsities());
         mapButton=findViewById(R.id.mapButton);
 
         mapButton.setOnClickListener(new View.OnClickListener() {

@@ -90,7 +90,10 @@
     <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyC9enByVf1vTDoehLZEJTObbRIOtYyHOL0</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_visiting_place_detail">VisitingPlaceDetail</string>
-    <string name="opening_hours">Opening Hours:-</string>
+    <string name="websities">Websities:-</string>
+    <string name="rate">Rate:-</string>
+     <string name="opening_hours">hRate:-</string>
+    <string name="comment">Add Comment:-</string>
     <string name="cuisines">Cuisines:-</string>
     <string name="highlights">Highlights:-</string>
     <string name="cost">Cost:-</string>

@@ -52,7 +52,7 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("home").orderByChild("rate").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -81,35 +81,7 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
 
             }
         });
-        mDatabase.child("Alex").addChildEventListener(new ChildEventListener() {
 
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                loadData(dataSnapshot);
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                loadData(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -251,7 +223,7 @@ logout.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onItemClick(View view, int postition) {
         Intent intent = new Intent(this, Details.class);
-        intent.putExtra("RESTAURANT_TRANSFER", myAdapter.getRestaurant(postition));
+        intent.putExtra("HOME_TRANSFER", myAdapter.getRestaurant(postition));
         startActivity(intent);
     }
 

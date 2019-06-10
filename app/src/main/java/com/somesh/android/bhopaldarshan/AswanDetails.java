@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 public class AswanDetails extends AppCompatActivity {
     private static final String TAG = "AswanDetails";
 
-    TextView address,goodFor,openingHours,entryFee,website,visitDuration,about;
+    TextView address,about,rate,websites,comments;
 
     ImageView AswanImage;
 
@@ -27,15 +27,13 @@ public class AswanDetails extends AppCompatActivity {
         // loading album cover using Glide library
 
         address=findViewById(R.id.drop1);
-        goodFor=findViewById(R.id.drop2);
-        openingHours=findViewById(R.id.drop3);
-        entryFee=findViewById(R.id.drop4);
-        website=findViewById(R.id.drop5);
-        visitDuration=findViewById(R.id.drop6);
-        about=findViewById(R.id.drop7);
+        about=findViewById(R.id.drop3);
+        rate=findViewById(R.id.drop2);
+        comments=findViewById(R.id.drop5);
+        websites=findViewById(R.id.drop4);
         AswanImage =findViewById(R.id.imageView);
         Intent intent = getIntent();
-        final Get_Data_Aswan getDataAswan = (Get_Data_Aswan)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
+        final GetData getDataAswan = (GetData)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
         Glide.with(getApplicationContext())
                 .load(getDataAswan.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
@@ -43,12 +41,10 @@ public class AswanDetails extends AppCompatActivity {
                         .error(R.drawable.broken_image))
                 .into(AswanImage);
         address.setText(getDataAswan.getAddress());
-        goodFor.setText(getDataAswan.getGoodFor());
-        openingHours.setText(getDataAswan.getOpeningHours());
-        entryFee.setText(getDataAswan.getEntryFee());
-        website.setText(getDataAswan.getWebsites());
-        visitDuration.setText(getDataAswan.getVisitDuration());
         about.setText(getDataAswan.getAbout());
+        rate.setText(getDataAswan.getRate());
+        comments.setText(getDataAswan.getComments());
+        websites.setText(getDataAswan.getWebsities());
         mapButton=(Button) findViewById(R.id.mapButton);
 
         mapButton.setOnClickListener(new View.OnClickListener() {

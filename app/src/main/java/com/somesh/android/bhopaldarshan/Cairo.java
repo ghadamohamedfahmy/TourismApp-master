@@ -22,14 +22,14 @@ public class Cairo extends AppCompatActivity implements CairoListener.OnReclycle
 
     RecyclerView myRecyclerView;
     CairoAdapter myAdapter;
-    List mCairo = new ArrayList<Get_Data_Cairo>();
+    List mCairo = new ArrayList<GetData>();
     private DatabaseReference mDatabase;
     private static final String TAG = "Cairo";
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Cairo").orderByChild("rate").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 loadData(dataSnapshot);
@@ -67,7 +67,7 @@ public class Cairo extends AppCompatActivity implements CairoListener.OnReclycle
     public void loadData(DataSnapshot dataSnapshot)
     {
 
-        Get_Data_Cairo getDataCairo =dataSnapshot.getValue(Get_Data_Cairo.class);
+        GetData getDataCairo =dataSnapshot.getValue(GetData.class);
         mCairo.add(getDataCairo);
 
         myAdapter = new CairoAdapter(Cairo.this,mCairo);
@@ -82,7 +82,7 @@ public class Cairo extends AppCompatActivity implements CairoListener.OnReclycle
     @Override
     public void onItemClick(View view, int postition) {
         Intent intent = new Intent(this, Cairo_Details.class);
-        intent.putExtra("TEMPLE_TRANSFER", myAdapter.getTemple(postition));
+        intent.putExtra("CAIRO_TRANSFER", myAdapter.getTemple(postition));
         startActivity(intent);
     }
 

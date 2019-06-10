@@ -42,7 +42,7 @@ public void onBindViewHolder(Luxor_adapter.MyViewHolder holder, final int positi
         GetData getData = mGetData.get(position);
         holder.placeTitle.setText(getData.getTitle());
         // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
-        Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
         .load(getData.getImageUrl())
         .thumbnail(Glide.with(context).load(R.drawable.giphy))

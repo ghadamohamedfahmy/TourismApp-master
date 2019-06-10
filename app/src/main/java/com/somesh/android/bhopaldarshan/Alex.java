@@ -33,7 +33,7 @@ public class Alex extends AppCompatActivity implements AlexListener.OnReclyclerC
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Alex").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Alex").orderByChild("rate").addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -91,7 +91,7 @@ public class Alex extends AppCompatActivity implements AlexListener.OnReclyclerC
     @Override
     public void onItemClick(View view, int postition) {
         Intent intent = new Intent(this, Details.class);
-        intent.putExtra("RESTAURANT_TRANSFER", myAdapter.getRestaurant(postition));
+        intent.putExtra("ALEX_TRANSFER", myAdapter.getAlexData(postition));
         startActivity(intent);
     }
 

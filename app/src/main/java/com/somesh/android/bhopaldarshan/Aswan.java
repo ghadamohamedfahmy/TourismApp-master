@@ -23,7 +23,7 @@ public class Aswan extends AppCompatActivity implements AswanListener.OnReclycle
     RecyclerView myRecyclerView;
     AswanAdapter myAdapter;
     //List mAswan = new ArrayList<>(Arrays.asList("Person 1", "Person 2", "Person 3", "Person 4", "Person 5", "Person 6", "Person 7"));
-    List mAswan = new ArrayList<Get_Data_Aswan>();
+    List mAswan = new ArrayList<GetData>();
     private DatabaseReference mDatabase;
     private static final String TAG = "Aswan";
     ProgressBar progressBar;
@@ -31,7 +31,7 @@ public class Aswan extends AppCompatActivity implements AswanListener.OnReclycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Aswan").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Aswan").orderByChild("rate").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 loadData(dataSnapshot);
@@ -69,7 +69,7 @@ public class Aswan extends AppCompatActivity implements AswanListener.OnReclycle
     public void loadData(DataSnapshot dataSnapshot)
     {
 
-        Get_Data_Aswan aswan=dataSnapshot.getValue(Get_Data_Aswan.class);
+        GetData aswan=dataSnapshot.getValue(GetData.class);
         mAswan.add(aswan);
 
         myAdapter = new AswanAdapter(Aswan.this, mAswan);
