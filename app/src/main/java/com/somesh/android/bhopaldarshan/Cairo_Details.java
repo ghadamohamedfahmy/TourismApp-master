@@ -22,7 +22,7 @@ public class Cairo_Details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temple_details);
+        setContentView(R.layout.cairo_details);
 
         address=findViewById(R.id.drop1);
         openingHours=findViewById(R.id.drop2);

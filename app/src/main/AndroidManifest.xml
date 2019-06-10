@@ -60,7 +60,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".VisitingPlaceDetails"
+            android:name=".AswanDetails"
             android:label="@string/title_activity_visiting_place_detail"
             android:theme="@style/AppTheme" />
         <activity android:name=".Cairo_Details" />

@@ -11,19 +11,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-public class VisitingPlaceDetails extends AppCompatActivity {
-    private static final String TAG = "VisitingPlaceDetails";
+public class AswanDetails extends AppCompatActivity {
+    private static final String TAG = "AswanDetails";
 
     TextView address,goodFor,openingHours,entryFee,website,visitDuration,about;
 
-    ImageView visitingPlaceImage;
+    ImageView AswanImage;
 
     Button mapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visiting_place_detail);
+        setContentView(R.layout.aswan_details);
         // loading album cover using Glide library
 
         address=findViewById(R.id.drop1);
@@ -33,7 +33,7 @@ public class VisitingPlaceDetails extends AppCompatActivity {
         website=findViewById(R.id.drop5);
         visitDuration=findViewById(R.id.drop6);
         about=findViewById(R.id.drop7);
-        visitingPlaceImage=findViewById(R.id.imageView);
+        AswanImage =findViewById(R.id.imageView);
         Intent intent = getIntent();
         final Get_Data_Aswan getDataAswan = (Get_Data_Aswan)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
         Glide.with(getApplicationContext())
@@ -41,7 +41,7 @@ public class VisitingPlaceDetails extends AppCompatActivity {
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
-                .into(visitingPlaceImage);
+                .into(AswanImage);
         address.setText(getDataAswan.getAddress());
         goodFor.setText(getDataAswan.getGoodFor());
         openingHours.setText(getDataAswan.getOpeningHours());

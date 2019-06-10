@@ -83,7 +83,7 @@ public class Aswan extends AppCompatActivity implements AswanListener.OnReclycle
 
     @Override
     public void onItemClick(View view, int postition) {
-        Intent intent = new Intent(this,VisitingPlaceDetails.class);
+        Intent intent = new Intent(this, AswanDetails.class);
         intent.putExtra("ASWAN_TRANSLATION", myAdapter.getVistingPlace(postition));
         startActivity(intent);
     }

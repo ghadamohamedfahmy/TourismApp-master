@@ -19,7 +19,7 @@ public class Details extends AppCompatActivity {
 
     TextView address,cuisines,openingHours,highlights,cost;
 
-    ImageView restaurantImage;
+    ImageView AlexImage;
 
     Button mapButton;
     ImageButton mvideoButton;
@@ -28,7 +28,7 @@ public class Details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_details);
+        setContentView(R.layout.alex_details);
 
         address=findViewById(R.id.drop1);
         cuisines=findViewById(R.id.drop2);
@@ -36,20 +36,20 @@ public class Details extends AppCompatActivity {
         highlights=findViewById(R.id.drop4);
         cost=findViewById(R.id.drop5);
 
-        restaurantImage=findViewById(R.id.imageView);
+        AlexImage =findViewById(R.id.imageView);
         linearLayout=findViewById(R.id.linearlayout);
         Intent intent = getIntent();
-        final GetData getData = (GetData)intent.getSerializableExtra("RESTAURANT_TRANSFER");
+        final GetData getData = (GetData)intent.getSerializableExtra("ALEX_TRANSFER");
         Picasso.with(getApplicationContext())
                 .load(getData.getImageUrl())
 
-                .into(restaurantImage);
+                .into(AlexImage);
        /*Glide.with(getApplicationContext())
                 .load(getData.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
-               .into(restaurantImage);*/
+               .into(AlexImage);*/
        // Toast.makeText(getApplicationContext(),getData.getAddress(),Toast.LENGTH_SHORT).show();
        address.setText( String.valueOf(getData.getAddress()));
         cuisines.setText(String.valueOf(getData.getCuisines()));

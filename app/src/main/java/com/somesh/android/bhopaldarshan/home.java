@@ -277,14 +277,14 @@ logout.setOnClickListener(new View.OnClickListener() {
     }
     public void OpenActivity_Others(){
         //// Intent intent= new Intent(this,activity_.class);
-      /*  Intent intent= new Intent (this,Others.class);
-        startActivity( intent);*/
+       Intent intent= new Intent (this,others.class);
+        startActivity( intent);
 
     }
     public void openActivity_luxor(){
 
-        /*Intent intent= new Intent (this,luxor.class);
-        startActivity( intent);*/
+        Intent intent= new Intent (this,Luxor.class);
+        startActivity( intent);
 
     }
     public void openActivity_Aswan(){
