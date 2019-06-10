@@ -117,7 +117,7 @@ public class Register extends AppCompatActivity {
 
     private void sendToMain() {
 
-        Intent mainIntent = new Intent(Register.this, login.class);
+        Intent mainIntent = new Intent(Register.this, home.class);
         startActivity(mainIntent);
         finish();
 

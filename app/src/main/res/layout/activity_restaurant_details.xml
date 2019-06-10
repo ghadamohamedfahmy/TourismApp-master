@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00796B"
-    tools:context="com.somesh.android.bhopaldarshan.RestaurantDetails">
+    tools:context="com.somesh.android.bhopaldarshan.Details">
 
     <ScrollView
         android:layout_width="match_parent"

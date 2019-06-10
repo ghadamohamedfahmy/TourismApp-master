@@ -9,15 +9,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -36,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class login extends AppCompatActivity implements home_listener.OnReclyclerClickListener {
+public class home extends AppCompatActivity implements home_listener.OnReclyclerClickListener {
     private Spinner spinner;
     private ImageButton button,logout;
     private ProgressBar mProgressCircle;
@@ -45,10 +42,10 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
     ListView simpleList;
     RecyclerView myRecyclerView;
     homeadapter myAdapter;
-    List mhome = new ArrayList<Restaurant>();
+    List mhome = new ArrayList<GetData>();
     private DatabaseReference mDatabase;
     ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();
-    private static final String TAG = "login";
+    private static final String TAG = "home";
 
     @RequiresApi (api = Build.VERSION_CODES.M)
     @Override
@@ -114,7 +111,7 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
             }
         });
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.home);
         ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = conMgr.getActiveNetworkInfo();
         mProgressCircle = findViewById(R.id.progress_circle);
@@ -156,21 +153,32 @@ public class login extends AppCompatActivity implements home_listener.OnReclycle
 
                     //show selected spinner item
                     Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
-                    //OpenActivity_arts();
+                    OpenActivity_Cairo();
                     //anything else you want to do on item selection do here
-                } else if (parent.getItemAtPosition(position).equals("luxor")) {
+                }
+                else if (parent.getItemAtPosition(position).equals("Alex")) {
+                    //on selecting a spinner item
+                    String item = parent.getItemAtPosition(position).toString();
+
+                    //show selected spinner item
+                    Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+                    OpenActivity_Alex();
+                    //anything else you want to do on item selection do here
+                }
+                else if (parent.getItemAtPosition(position).equals("luxor")) {
                     String item = parent.getItemAtPosition(position).toString();
 
                     Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
-                   // openActivity_carpenter();
+                    openActivity_luxor();
                 } else if (parent.getItemAtPosition(position).equals("Aswan")) {
                     String item = parent.getItemAtPosition(position).toString();
 
                     Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
-                  //  openActivity_real();
+                  openActivity_Aswan();
                 } else {
                     String item = parent.getItemAtPosition(position).toString();
                     Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+                    OpenActivity_Others();
                 }
 
 
@@ -202,7 +210,7 @@ logout.setOnClickListener(new View.OnClickListener() {
                 }else{
                     Log.d(TAG, "onAuthStateChanged: signed_out");
                     Toast.makeText(getApplicationContext(), "Signed out", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(login.this, MainActivity.class);
+                    Intent intent = new Intent(home.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
@@ -232,9 +240,9 @@ logout.setOnClickListener(new View.OnClickListener() {
 
 
     public void loadData(DataSnapshot dataSnapshot) {
-        Restaurant home=dataSnapshot.getValue(Restaurant.class);
+        GetData home=dataSnapshot.getValue(GetData.class);
         mhome.add(home);
-        myAdapter = new homeadapter(login.this, mhome);
+        myAdapter = new homeadapter(com.somesh.android.bhopaldarshan.home.this, mhome);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         myRecyclerView.setLayoutManager(linearLayoutManager);
         myRecyclerView.setAdapter(myAdapter);
@@ -242,7 +250,7 @@ logout.setOnClickListener(new View.OnClickListener() {
     }
     @Override
     public void onItemClick(View view, int postition) {
-        Intent intent = new Intent(this,RestaurantDetails.class);
+        Intent intent = new Intent(this, Details.class);
         intent.putExtra("RESTAURANT_TRANSFER", myAdapter.getRestaurant(postition));
         startActivity(intent);
     }
@@ -251,35 +259,41 @@ logout.setOnClickListener(new View.OnClickListener() {
     public void onItemLongClick(View view, int postition) {
 
     }
-    public void buttonFunction(View y)
+    public void OpenActivity_Alex()
     {
         if (netInfo == null){
             Toast.makeText(this,"There is no Internet Connectivity !",Toast.LENGTH_SHORT).show();
         }else {
-            Intent intent = new Intent(getApplicationContext(), Restaurants.class);
+            Intent intent = new Intent(getApplicationContext(), Alex.class);
             startActivity(intent);
         }
     }
 
-  /*  public void OpenActivity_arts(){
+    public void OpenActivity_Cairo(){
         //// Intent intent= new Intent(this,activity_.class);
-        Intent intent= new Intent (this,cairo.class);
+        Intent intent= new Intent (this,Cairo.class);
         startActivity( intent);
 
     }
-    public void openActivity_carpenter(){
+    public void OpenActivity_Others(){
+        //// Intent intent= new Intent(this,activity_.class);
+      /*  Intent intent= new Intent (this,Others.class);
+        startActivity( intent);*/
 
+    }
+    public void openActivity_luxor(){
+
+        /*Intent intent= new Intent (this,luxor.class);
+        startActivity( intent);*/
+
+    }
+    public void openActivity_Aswan(){
+        //// Intent intent= new Intent(this,activity_.class);
         Intent intent= new Intent (this,Aswan.class);
         startActivity( intent);
 
     }
-    public void openActivity_real(){
-        //// Intent intent= new Intent(this,activity_.class);
-        Intent intent= new Intent (this,Alex.class);
-        startActivity( intent);
-
-    }
-    public void open_addd_services(){
+   /* public void open_addd_services(){
         Intent intent= new Intent(this,luxor.class);
         startActivity( intent);
     }

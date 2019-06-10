@@ -15,10 +15,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".showvideo"></activity>
+        <activity android:name=".Luxor_Details"></activity>
+        <activity android:name=".Other_Details" />
+        <activity android:name=".Luxor_adapter" />
+        <activity android:name=".Luxor" />
+        <activity android:name=".others_adapter" />
+        <activity android:name=".others" />
+        <activity android:name=".showvideo" />
         <activity android:name=".Register" />
         <activity android:name=".homeadapter" />
-        <activity android:name=".login" />
+        <activity android:name=".home" />
         <activity android:name=".adaaapter" />
         <activity
             android:name=".MainActivity"
@@ -30,13 +36,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Restaurants"
+            android:name=".Alex"
             android:label="@string/title_activity_restaurants" />
         <activity
-            android:name=".Temples"
+            android:name=".Cairo"
             android:label="@string/title_activity_temples" />
         <activity
-            android:name=".VisitingPlaces"
+            android:name=".Aswan"
             android:label="@string/title_activity_visitingplaces" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -57,8 +63,8 @@
             android:name=".VisitingPlaceDetails"
             android:label="@string/title_activity_visiting_place_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".TempleDetails" />
-        <activity android:name=".RestaurantDetails" />
+        <activity android:name=".Cairo_Details" />
+        <activity android:name=".Details" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@ package com.somesh.android.bhopaldarshan;
  */
 import java.io.Serializable;
 
-public class Temple implements Serializable{
+public class Get_Data_Cairo implements Serializable{
     private static final long serialVersionUID=1L;
 
     String title;

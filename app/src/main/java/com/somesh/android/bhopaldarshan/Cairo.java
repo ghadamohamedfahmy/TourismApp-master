@@ -3,7 +3,7 @@ package com.somesh.android.bhopaldarshan;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -18,18 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Temples extends AppCompatActivity implements TemplesListener.OnReclyclerClickListener{
+public class Cairo extends AppCompatActivity implements CairoListener.OnReclyclerClickListener{
 
     RecyclerView myRecyclerView;
-    TemplesAdapter myAdapter;
-    List mTemples = new ArrayList<Temple>();
+    CairoAdapter myAdapter;
+    List mCairo = new ArrayList<Get_Data_Cairo>();
     private DatabaseReference mDatabase;
-    private static final String TAG = "Temples";
+    private static final String TAG = "Cairo";
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("temples").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("Cairo").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 loadData(dataSnapshot);
@@ -57,29 +57,31 @@ public class Temples extends AppCompatActivity implements TemplesListener.OnRecl
         });
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.temples);
+        setContentView(R.layout.cairo);
         progressBar=findViewById(R.id.progress);
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
-        myRecyclerView.addOnItemTouchListener(new TemplesListener(this,myRecyclerView,this));
+        myRecyclerView.addOnItemTouchListener(new CairoListener(this,myRecyclerView,this));
 
     }
 
     public void loadData(DataSnapshot dataSnapshot)
     {
 
-        Temple temple=dataSnapshot.getValue(Temple.class);
-        mTemples.add(temple);
+        Get_Data_Cairo getDataCairo =dataSnapshot.getValue(Get_Data_Cairo.class);
+        mCairo.add(getDataCairo);
 
-        myAdapter = new TemplesAdapter(Temples.this,mTemples);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        myRecyclerView.setLayoutManager(gridLayoutManager);
+        myAdapter = new CairoAdapter(Cairo.this,mCairo);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        myRecyclerView.setLayoutManager(linearLayoutManager);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         myRecyclerView.setAdapter(myAdapter);
         progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onItemClick(View view, int postition) {
-        Intent intent = new Intent(this,TempleDetails.class);
+        Intent intent = new Intent(this, Cairo_Details.class);
         intent.putExtra("TEMPLE_TRANSFER", myAdapter.getTemple(postition));
         startActivity(intent);
     }

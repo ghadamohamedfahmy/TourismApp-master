@@ -14,39 +14,37 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 /**
- * Created by nsaxena on 10/2/18.
+ * Created by nsaxena on 27/2/18.
  */
 
-class VisitingPlacesAdapter extends RecyclerView.Adapter<VisitingPlacesAdapter.MyViewHolder> {
-
-    List<VisitingPlace> visitingPlacesList;
+public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder>{
+    List<Get_Data_Cairo> mGetDataCairos;
     Context context;
 
-    public VisitingPlacesAdapter(Context context,List visitingPlacesList) {
+    public CairoAdapter(Context context, List templeList) {
         this.context=context;
-        this.visitingPlacesList = visitingPlacesList;
+        this.mGetDataCairos = templeList;
     }
     @Override
     public int getItemCount() {
-        return visitingPlacesList.size();
+        return mGetDataCairos.size();
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CairoAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.visiting_places_list_item,parent, false);
-        return new MyViewHolder(v);
+                .inflate(R.layout.activity_cairo_adapter,parent, false);
+        return new CairoAdapter.MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(CairoAdapter.MyViewHolder holder, final int position) {
         // set the data in items
-        //holder.placeTitle.setText((Integer) visitingPlacesList.get(position));
-        VisitingPlace visitingPlace =visitingPlacesList.get(position);
-        holder.placeTitle.setText(visitingPlace.getTitle());
+        Get_Data_Cairo getDataCairo = mGetDataCairos.get(position);
+        holder.placeTitle.setText(getDataCairo.getTitle());
         // loading album cover using Glide library
         Glide.with(context)
-                .load(visitingPlace.getImageUrl())
+                .load(getDataCairo.getImageUrl())
                 .thumbnail(Glide.with(context).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
@@ -58,12 +56,12 @@ class VisitingPlacesAdapter extends RecyclerView.Adapter<VisitingPlacesAdapter.M
 
         public MyViewHolder(View view) {
             super(view);
-            placeTitle=(TextView)view.findViewById(R.id.visiting_place_title);
-            placeImage=(ImageView)view.findViewById(R.id.visiting_place_image);
+            placeTitle=(TextView)view.findViewById(R.id.hometitle);
+            placeImage=(ImageView)view.findViewById(R.id.homeimage);
         }
     }
 
-    public VisitingPlace getVistingPlace(int position) {
-        return visitingPlacesList.get(position);
+    public Get_Data_Cairo getTemple(int position) {
+        return mGetDataCairos.get(position);
     }
 }

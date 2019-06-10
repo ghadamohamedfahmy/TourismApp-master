@@ -7,7 +7,7 @@ import java.util.List;
  * Created by nsaxena on 28/2/18.
  */
 
-public class Restaurant implements Serializable {
+public class GetData implements Serializable {
     private static final long serialVersionUID=1L;
 
     String title;

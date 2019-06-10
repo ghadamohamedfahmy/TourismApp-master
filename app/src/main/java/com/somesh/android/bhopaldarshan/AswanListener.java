@@ -7,22 +7,19 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by nsaxena on 28/2/18.
- */
 
-class RestaurantsListener extends RecyclerView.SimpleOnItemTouchListener {
-    private static final String TAG = "RestaurantsListener";
+class AswanListener extends RecyclerView.SimpleOnItemTouchListener{
+    private static final String TAG = "AswanListener";
 
     interface OnReclyclerClickListener{
-        void onItemClick(View view, int postition);
+        void onItemClick(View view,int postition);
         void onItemLongClick(View view,int postition);
     }
 
-    private final RestaurantsListener.OnReclyclerClickListener mListener;
+    private final OnReclyclerClickListener mListener;
     private final GestureDetectorCompat mGetGestureDetector;
 
-    public RestaurantsListener(Context context, final RecyclerView recyclerView, RestaurantsListener.OnReclyclerClickListener listener) {
+    public AswanListener(Context context, final RecyclerView recyclerView, OnReclyclerClickListener listener) {
         mListener = listener;
         mGetGestureDetector=new GestureDetectorCompat(context,new GestureDetector.SimpleOnGestureListener(){
             @Override
@@ -36,7 +33,6 @@ class RestaurantsListener extends RecyclerView.SimpleOnItemTouchListener {
 
             @Override
             public void onLongPress(MotionEvent e) {
-
                 View childView=recyclerView.findChildViewUnder(e.getX(),e.getY());
                 if(childView!=null && mListener!=null){
                     mListener.onItemClick(childView,recyclerView.getChildAdapterPosition(childView));

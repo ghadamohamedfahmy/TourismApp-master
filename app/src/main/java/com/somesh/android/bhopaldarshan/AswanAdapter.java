@@ -14,37 +14,39 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 /**
- * Created by nsaxena on 27/2/18.
+ * Created by nsaxena on 10/2/18.
  */
 
-public class TemplesAdapter extends RecyclerView.Adapter<TemplesAdapter.MyViewHolder>{
-    List<Temple> mTemples;
+class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
+
+    List<Get_Data_Aswan> aswanlist;
     Context context;
 
-    public TemplesAdapter(Context context,List templeList) {
+    public AswanAdapter(Context context, List aswanlist) {
         this.context=context;
-        this.mTemples = templeList;
+        this.aswanlist = aswanlist;
     }
     @Override
     public int getItemCount() {
-        return mTemples.size();
+        return aswanlist.size();
     }
 
     @Override
-    public TemplesAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.temple_list_item,parent, false);
-        return new TemplesAdapter.MyViewHolder(v);
+                .inflate(R.layout.aswan_adapter,parent, false);
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(TemplesAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         // set the data in items
-        Temple temple =mTemples.get(position);
-        holder.placeTitle.setText(temple.getTitle());
+        //holder.placeTitle.setText((Integer) aswanlist.get(position));
+        Get_Data_Aswan getDataAswan = aswanlist.get(position);
+        holder.placeTitle.setText(getDataAswan.getTitle());
         // loading album cover using Glide library
         Glide.with(context)
-                .load(temple.getImageUrl())
+                .load(getDataAswan.getImageUrl())
                 .thumbnail(Glide.with(context).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
@@ -56,12 +58,12 @@ public class TemplesAdapter extends RecyclerView.Adapter<TemplesAdapter.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
-            placeTitle=(TextView)view.findViewById(R.id.temple_title);
-            placeImage=(ImageView)view.findViewById(R.id.temple_image);
+            placeTitle=(TextView)view.findViewById(R.id.hometitle);
+            placeImage=(ImageView)view.findViewById(R.id.homeimage);
         }
     }
 
-    public Temple getTemple(int position) {
-        return mTemples.get(position);
+    public Get_Data_Aswan getVistingPlace(int position) {
+        return aswanlist.get(position);
     }
 }

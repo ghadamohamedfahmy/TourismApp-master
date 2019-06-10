@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by nsaxena on 9/2/18.
  */
 
-public class VisitingPlace implements Serializable{
+public class Get_Data_Aswan implements Serializable{
 
     private static final long serialVersionUID=1L;
 
@@ -22,7 +22,7 @@ public class VisitingPlace implements Serializable{
     String latitude;
     String longitude;
 
-   public VisitingPlace()
+   public Get_Data_Aswan()
    {
 
    }
@@ -117,7 +117,7 @@ public class VisitingPlace implements Serializable{
 
     @Override
     public String toString() {
-        return "VisitingPlace{" +
+        return "Get_Data_Aswan{" +
                 "title='" + title + '\'' +
                 ", about='" + about + '\'' +
                 ", address='" + address + '\'' +

@@ -7,19 +7,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-
-class VisitingPlacesListener extends RecyclerView.SimpleOnItemTouchListener{
-    private static final String TAG = "VisitingPlacesListener";
+public class Others_Listener extends RecyclerView.SimpleOnItemTouchListener {
+    private static final String TAG = "OTHER_LISTENER";
 
     interface OnReclyclerClickListener{
-        void onItemClick(View view,int postition);
+        void onItemClick(View view, int postition);
         void onItemLongClick(View view,int postition);
     }
 
-    private final OnReclyclerClickListener mListener;
+    private final Others_Listener.OnReclyclerClickListener mListener;
     private final GestureDetectorCompat mGetGestureDetector;
 
-    public VisitingPlacesListener(Context context,final RecyclerView recyclerView,OnReclyclerClickListener listener) {
+    public Others_Listener(Context context, final RecyclerView recyclerView, Others_Listener.OnReclyclerClickListener listener) {
         mListener = listener;
         mGetGestureDetector=new GestureDetectorCompat(context,new GestureDetector.SimpleOnGestureListener(){
             @Override
@@ -33,6 +32,7 @@ class VisitingPlacesListener extends RecyclerView.SimpleOnItemTouchListener{
 
             @Override
             public void onLongPress(MotionEvent e) {
+
                 View childView=recyclerView.findChildViewUnder(e.getX(),e.getY());
                 if(childView!=null && mListener!=null){
                     mListener.onItemClick(childView,recyclerView.getChildAdapterPosition(childView));

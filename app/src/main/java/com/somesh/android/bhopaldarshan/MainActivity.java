@@ -1,14 +1,8 @@
 package com.somesh.android.bhopaldarshan;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -117,7 +111,7 @@ DatabaseReference users;
 
     private void sendToMain() {
 
-        Intent mainIntent = new Intent(MainActivity.this, login.class);
+        Intent mainIntent = new Intent(MainActivity.this, home.class);
         startActivity(mainIntent);
         finish();
 

@@ -1,6 +1,8 @@
 package com.somesh.android.bhopaldarshan;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,35 +16,35 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
-public class homeadapter extends RecyclerView.Adapter<homeadapter.MyViewHolder>{
-        List<GetData> mhome;
+public class Luxor_adapter extends RecyclerView.Adapter<Luxor_adapter.MyViewHolder>{
+        List<GetData> mGetData;
         Context context;
 
-public homeadapter(Context context,List homelist) {
+public Luxor_adapter(Context context, List restaurantList) {
         this.context=context;
-        this.mhome = homelist;
+        this.mGetData = restaurantList;
         }
 @Override
 public int getItemCount() {
-        return mhome.size();
+        return mGetData.size();
         }
 
 @Override
-public homeadapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+public Luxor_adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.activity_homeadapter,parent, false);
-        return new homeadapter.MyViewHolder(v);
+        .inflate(R.layout.alex_adapter,parent, false);
+        return new Luxor_adapter.MyViewHolder(v);
         }
 
 @Override
-public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position) {
+public void onBindViewHolder(Luxor_adapter.MyViewHolder holder, final int position) {
         // set the data in items
-        GetData home =mhome.get(position);
-        holder.placeTitle.setText(home.getTitle());
-        // Picasso.with(context).load(restaurant.getImageUrl()).into(holder.placeImage);
-        Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
+        GetData getData = mGetData.get(position);
+        holder.placeTitle.setText(getData.getTitle());
+        // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
+        Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
-        .load(home.getImageUrl())
+        .load(getData.getImageUrl())
         .thumbnail(Glide.with(context).load(R.drawable.giphy))
         .apply(new RequestOptions()
         .error(R.drawable.broken_image))
@@ -61,6 +63,6 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 }
 
     public GetData getRestaurant(int position) {
-        return mhome.get(position);
+        return mGetData.get(position);
     }
 }

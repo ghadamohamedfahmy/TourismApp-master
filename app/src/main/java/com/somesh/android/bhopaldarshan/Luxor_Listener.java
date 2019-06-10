@@ -7,22 +7,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by nsaxena on 27/2/18.
- */
+public class Luxor_Listener extends RecyclerView.SimpleOnItemTouchListener {
+private static final String TAG = "LUXOR_LiSTENER";
 
-public class TemplesListener extends RecyclerView.SimpleOnItemTouchListener{
-    private static final String TAG = "TemplesListener";
+interface OnReclyclerClickListener{
+    void onItemClick(View view, int postition);
+    void onItemLongClick(View view,int postition);
+}
 
-    interface OnReclyclerClickListener{
-        void onItemClick(View view, int postition);
-        void onItemLongClick(View view,int postition);
-    }
-
-    private final TemplesListener.OnReclyclerClickListener mListener;
+    private final Luxor_Listener.OnReclyclerClickListener mListener;
     private final GestureDetectorCompat mGetGestureDetector;
 
-    public TemplesListener(Context context, final RecyclerView recyclerView, TemplesListener.OnReclyclerClickListener listener) {
+    public Luxor_Listener(Context context, final RecyclerView recyclerView, Luxor_Listener.OnReclyclerClickListener listener) {
         mListener = listener;
         mGetGestureDetector=new GestureDetectorCompat(context,new GestureDetector.SimpleOnGestureListener(){
             @Override

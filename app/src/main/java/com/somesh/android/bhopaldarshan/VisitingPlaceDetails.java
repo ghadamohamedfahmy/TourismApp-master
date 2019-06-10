@@ -35,20 +35,20 @@ public class VisitingPlaceDetails extends AppCompatActivity {
         about=findViewById(R.id.drop7);
         visitingPlaceImage=findViewById(R.id.imageView);
         Intent intent = getIntent();
-        final VisitingPlace visitingPlace = (VisitingPlace)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
+        final Get_Data_Aswan getDataAswan = (Get_Data_Aswan)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
         Glide.with(getApplicationContext())
-                .load(visitingPlace.getImageUrl())
+                .load(getDataAswan.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
                 .into(visitingPlaceImage);
-        address.setText(visitingPlace.getAddress());
-        goodFor.setText(visitingPlace.getGoodFor());
-        openingHours.setText(visitingPlace.getOpeningHours());
-        entryFee.setText(visitingPlace.getEntryFee());
-        website.setText(visitingPlace.getWebsites());
-        visitDuration.setText(visitingPlace.getVisitDuration());
-        about.setText(visitingPlace.getAbout());
+        address.setText(getDataAswan.getAddress());
+        goodFor.setText(getDataAswan.getGoodFor());
+        openingHours.setText(getDataAswan.getOpeningHours());
+        entryFee.setText(getDataAswan.getEntryFee());
+        website.setText(getDataAswan.getWebsites());
+        visitDuration.setText(getDataAswan.getVisitDuration());
+        about.setText(getDataAswan.getAbout());
         mapButton=(Button) findViewById(R.id.mapButton);
 
         mapButton.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +56,8 @@ public class VisitingPlaceDetails extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
-                intent.putExtra("LAT",Double.valueOf(visitingPlace.getLatitude()));
-                intent.putExtra("LNG",Double.valueOf(visitingPlace.getLongitude()));
+                intent.putExtra("LAT",Double.valueOf(getDataAswan.getLatitude()));
+                intent.putExtra("LNG",Double.valueOf(getDataAswan.getLongitude()));
                 startActivity(intent);            }
         });
 

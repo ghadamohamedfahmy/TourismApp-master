@@ -10,15 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
-public class RestaurantDetails extends AppCompatActivity {
+public class Details extends AppCompatActivity {
 
-    private static final String TAG = "RestaurantDetails";
+    private static final String TAG = "Details";
 
     TextView address,cuisines,openingHours,highlights,cost;
 
@@ -42,27 +39,27 @@ public class RestaurantDetails extends AppCompatActivity {
         restaurantImage=findViewById(R.id.imageView);
         linearLayout=findViewById(R.id.linearlayout);
         Intent intent = getIntent();
-        final Restaurant restaurant = (Restaurant)intent.getSerializableExtra("RESTAURANT_TRANSFER");
+        final GetData getData = (GetData)intent.getSerializableExtra("RESTAURANT_TRANSFER");
         Picasso.with(getApplicationContext())
-                .load(restaurant.getImageUrl())
+                .load(getData.getImageUrl())
 
                 .into(restaurantImage);
        /*Glide.with(getApplicationContext())
-                .load(restaurant.getImageUrl())
+                .load(getData.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
                .into(restaurantImage);*/
-       // Toast.makeText(getApplicationContext(),restaurant.getAddress(),Toast.LENGTH_SHORT).show();
-       address.setText( String.valueOf(restaurant.getAddress()));
-        cuisines.setText(String.valueOf(restaurant.getCuisines()));
-        openingHours.setText(String.valueOf(restaurant.getOpeningHours()));
-        highlights.setText(String.valueOf(restaurant.getHighlights()));
-        cost.setText(String.valueOf(restaurant.getCost()));
+       // Toast.makeText(getApplicationContext(),getData.getAddress(),Toast.LENGTH_SHORT).show();
+       address.setText( String.valueOf(getData.getAddress()));
+        cuisines.setText(String.valueOf(getData.getCuisines()));
+        openingHours.setText(String.valueOf(getData.getOpeningHours()));
+        highlights.setText(String.valueOf(getData.getHighlights()));
+        cost.setText(String.valueOf(getData.getCost()));
 
-        if(restaurant.getMenuImages()!=null)
+        if(getData.getMenuImages()!=null)
         {
-            for(String menuImage:restaurant.getMenuImages())
+            for(String menuImage: getData.getMenuImages())
             {
                 ImageView currentImage = new ImageView(this);
                 linearLayout.addView(currentImage);
@@ -94,8 +91,8 @@ public class RestaurantDetails extends AppCompatActivity {
 
                 Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
 
-                intent.putExtra("LAT",Double.valueOf(restaurant.getLatitude()));
-                intent.putExtra("LNG",Double.valueOf(restaurant.getLongitude()));
+                intent.putExtra("LAT",Double.valueOf(getData.getLatitude()));
+                intent.putExtra("LNG",Double.valueOf(getData.getLongitude()));
                 startActivity(intent);            }
        });
         mvideoButton=findViewById(R.id.videoButton);

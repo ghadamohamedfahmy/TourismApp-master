@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-public class TempleDetails extends AppCompatActivity {
+public class Cairo_Details extends AppCompatActivity {
 
     TextView address,openingHours,about;
 
@@ -31,17 +31,17 @@ public class TempleDetails extends AppCompatActivity {
         templeImage=findViewById(R.id.imageView);
 
         Intent intent = getIntent();
-        final Temple temple = (Temple)intent.getSerializableExtra("TEMPLE_TRANSFER");
+        final Get_Data_Cairo getDataCairo = (Get_Data_Cairo)intent.getSerializableExtra("TEMPLE_TRANSFER");
 
         Glide.with(getApplicationContext())
-                .load(temple.getImageUrl())
+                .load(getDataCairo.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
                 .apply(new RequestOptions()
                         .error(R.drawable.broken_image))
                 .into(templeImage);
-        address.setText(temple.getAddress());
-        openingHours.setText(temple.getOpeningHours());
-        about.setText(temple.getAbout());
+        address.setText(getDataCairo.getAddress());
+        openingHours.setText(getDataCairo.getOpeningHours());
+        about.setText(getDataCairo.getAbout());
 
         mapButton=(Button) findViewById(R.id.mapButton);
 
@@ -50,8 +50,8 @@ public class TempleDetails extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
-                intent.putExtra("LAT",Double.valueOf(temple.getLatitude()));
-                intent.putExtra("LNG",Double.valueOf(temple.getLongitude()));
+                intent.putExtra("LAT",Double.valueOf(getDataCairo.getLatitude()));
+                intent.putExtra("LNG",Double.valueOf(getDataCairo.getLongitude()));
                 startActivity(intent);            }
         });
     }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#2D055E53"
+    tools:context=".Luxor_adapter" android:background="#2D055E53"
 
-    android:orientation="horizontal">
+    >
 
 
     <android.support.v7.widget.CardView
@@ -54,7 +55,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                />
 
             <TextView
                 android:id="@+id/comments"
@@ -66,8 +67,7 @@
                 android:hint="@string/retrievepass"
                 android:text="0 Comments"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,7 +87,8 @@
 
                 android:background="@drawable/comment"
                 android:scaleType="fitEnd"
-                android:src="@drawable/comment" />
+                android:src="@drawable/comment"
+                />
 
             <ImageView
                 android:id="@+id/imagerate"
@@ -98,8 +99,7 @@
                 android:layout_marginTop="200dp"
                 android:background="#0800796B"
 
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:srcCompat="@drawable/like" />
+                card_view:srcCompat="@drawable/like" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
