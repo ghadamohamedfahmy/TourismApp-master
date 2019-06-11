@@ -30,7 +30,9 @@ public class GetData implements Serializable {
         this.title = title;
     }
 
+    public void setName(String name) {  Name = name; }
 
+    public String getName() { return Name;}
 
     public void setAbout(String about) {   this.about = about;}
 
