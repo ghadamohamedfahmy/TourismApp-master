@@ -20,7 +20,7 @@ public class Details extends AppCompatActivity {
     TextView address,about,rate,websites,comments;
 
     ImageView AlexImage;
-
+    Button button ;
     Button mapButton;
     ImageButton mvideoButton;
     LinearLayout linearLayout;
@@ -29,7 +29,7 @@ public class Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alex_details);
-
+        button=findViewById(R.id.addcomment);
         address=findViewById(R.id.drop1);
         about=findViewById(R.id.drop3);
         rate=findViewById(R.id.drop2);
@@ -78,6 +78,15 @@ public class Details extends AppCompatActivity {
 
                 startActivity(intent);            }
         });
+        button.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Details.this,Comments.class);
+                intent.putExtra("City_COMMENT",getData.getAbout());
+                intent.putExtra("city","Alex");
+                startActivity(intent);
+            }
+        }));
     }
 
 }

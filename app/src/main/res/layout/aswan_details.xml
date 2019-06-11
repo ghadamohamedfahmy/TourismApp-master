@@ -115,8 +115,8 @@
 
             <TextView
                 android:id="@+id/head4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="389dp"
+                android:layout_height="52dp"
                 android:layout_marginTop="8dp"
                 android:paddingTop="20dp"
                 android:text="@string/websites"
@@ -207,6 +207,64 @@
                 app:layout_constraintHorizontal_bias="0.21"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mapButton" />
+            <ImageButton
+                android:id="@+id/videoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/quantum_ic_play_circle_filled_grey600_36"
+                app:srcCompat="@drawable/mr_media_play_light"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="271dp"
+                tools:layout_editor_absoluteY="208dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playvedio"
+                android:textColor="#FFFFFF"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="270dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/drop5">
+
+                <EditText
+                    android:id="@+id/comment"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/addcomment"
+
+                    android:inputType="textMultiLine"
+                    tools:ignore="MissingConstraints"
+
+
+                    />
+
+                <Button
+                    android:id="@+id/addcomment"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/comment"
+                    android:scaleType="centerInside" />
+
+            </LinearLayout>
 
 
 
@@ -214,24 +272,5 @@
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
-    <ImageButton
-        android:id="@+id/videoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/quantum_ic_play_circle_filled_grey600_36"
-        app:srcCompat="@drawable/mr_media_play_light"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="208dp"
-        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/playvedio"
-        android:textColor="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="270dp" />
 </android.support.constraint.ConstraintLayout>

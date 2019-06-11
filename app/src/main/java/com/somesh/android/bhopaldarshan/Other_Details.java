@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,23 +19,24 @@ public class Other_Details extends AppCompatActivity {
     ImageView OtherImage;
 
     Button mapButton;
+    Button button ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luxor__details);
-
+        button=findViewById(R.id.addcomment);
         address=findViewById(R.id.drop1);
         about=findViewById(R.id.drop3);
         rate=findViewById(R.id.drop2);
         comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
 
-
+        ImageButton mvideoButton;
         OtherImage=findViewById(R.id.imageView);
 
         Intent intent = getIntent();
-        final GetData getDataOther = (GetData)intent.getSerializableExtra("Other_TRANSFER");
+        final GetData getDataOther = (GetData)intent.getSerializableExtra("OTHER_TRANSFER");
 
         Glide.with(getApplicationContext())
                 .load(getDataOther.getImageUrl())
@@ -59,5 +61,24 @@ public class Other_Details extends AppCompatActivity {
                 intent.putExtra("LNG",Double.valueOf(getDataOther.getLongitude()));
                 startActivity(intent);            }
         });
+        mvideoButton=findViewById(R.id.videoButton);
+        mvideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent= new Intent(getApplicationContext(),showvideo.class);
+
+
+                startActivity(intent);            }
+        });
+        button.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Other_Details.this,Comments.class);
+                intent.putExtra("City_COMMENT",getDataOther.getAbout());
+                intent.putExtra("city","Others");
+                startActivity(intent);
+            }
+        }));
     }
 }

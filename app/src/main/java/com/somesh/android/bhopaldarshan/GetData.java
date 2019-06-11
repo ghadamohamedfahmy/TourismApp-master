@@ -19,6 +19,7 @@ public class GetData implements Serializable {
     String rate;
     String websities;
     String comments;
+    String Name;
 
 
     public String getTitle() {
@@ -28,6 +29,8 @@ public class GetData implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 
     public void setAbout(String about) {   this.about = about;}
 

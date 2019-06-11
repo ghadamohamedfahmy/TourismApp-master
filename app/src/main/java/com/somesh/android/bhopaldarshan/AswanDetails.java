@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,15 +18,16 @@ public class AswanDetails extends AppCompatActivity {
     TextView address,about,rate,websites,comments;
 
     ImageView AswanImage;
-
+    Button button ;
     Button mapButton;
+    ImageButton mvideoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aswan_details);
         // loading album cover using Glide library
-
+        button=findViewById(R.id.addcomment);
         address=findViewById(R.id.drop1);
         about=findViewById(R.id.drop3);
         rate=findViewById(R.id.drop2);
@@ -33,7 +35,7 @@ public class AswanDetails extends AppCompatActivity {
         websites=findViewById(R.id.drop4);
         AswanImage =findViewById(R.id.imageView);
         Intent intent = getIntent();
-        final GetData getDataAswan = (GetData)intent.getSerializableExtra("VISITING_PLACE_TRANSFER");
+        final GetData getDataAswan = (GetData)intent.getSerializableExtra("ASWAN_TRANSLATION");
         Glide.with(getApplicationContext())
                 .load(getDataAswan.getImageUrl())
                 .thumbnail(Glide.with(getApplicationContext()).load(R.drawable.giphy))
@@ -56,6 +58,25 @@ public class AswanDetails extends AppCompatActivity {
                 intent.putExtra("LNG",Double.valueOf(getDataAswan.getLongitude()));
                 startActivity(intent);            }
         });
+        mvideoButton=findViewById(R.id.videoButton);
+        mvideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent= new Intent(getApplicationContext(),showvideo.class);
+
+
+                startActivity(intent);            }
+        });
+        button.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AswanDetails.this,Comments.class);
+                intent.putExtra("City_COMMENT",getDataAswan.getAbout());
+                intent.putExtra("city","Aswan");
+                startActivity(intent);
+            }
+        }));
 
     }
 }

@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +37,7 @@ import java.util.Map;
 public class home extends AppCompatActivity implements home_listener.OnReclyclerClickListener {
     private Spinner spinner;
     private ImageButton button,logout;
+    private TextView rate;
     private ProgressBar mProgressCircle;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     NetworkInfo netInfo;
@@ -88,10 +90,11 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
         netInfo = conMgr.getActiveNetworkInfo();
         mProgressCircle = findViewById(R.id.progress_circle);
         button = findViewById(R.id.user);
+        rate = findViewById(R.id.rate);
         spinner = findViewById(R.id.spinner1);
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new home_listener(this,myRecyclerView,this));
-        simpleList=findViewById(R.id.simpleListView);
+       // simpleList=findViewById(R.id.simpleListView);
         logout = findViewById(R.id.logout);
 
 
@@ -162,7 +165,14 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
                 // TODO Auto-generated method stub
             }
         });
+button.setOnClickListener((new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(home.this,Comments.class);
 
+        startActivity(intent);
+    }
+}));
 logout.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {

@@ -126,7 +126,7 @@ android:layout_height="match_parent">
             android:gravity="center"
             android:letterSpacing="0.2"
             android:padding="16dp"
-            android:text="@string/signgmail"
+            android:text="Create Account ? Signup"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
@@ -136,7 +136,7 @@ android:layout_height="match_parent">
             android:layout_height="wrap_content"
             android:gravity="center"
             android:letterSpacing="0.1"
-            android:text="Create Account ? Signup"
+            android:text="@string/signgmail"
             android:textColor="#d9e5f3" />
     </LinearLayout>
 
@@ -147,10 +147,9 @@ android:layout_height="match_parent">
     android:gravity="center">
 
     <ImageView
-        android:layout_width="277dp"
-        android:layout_height="77dp"
-        android:background="@drawable/logo"
-        />
+        android:layout_width="369dp"
+        android:layout_height="82dp"
+        android:background="@drawable/logo2" />
 </LinearLayout>
 </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

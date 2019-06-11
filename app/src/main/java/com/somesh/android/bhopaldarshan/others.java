@@ -66,8 +66,8 @@ public class others extends AppCompatActivity implements Others_Listener.OnRecly
         progressBar=findViewById(R.id.progress);
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new Others_Listener(this,myRecyclerView,this));
-        simpleList=findViewById(R.id.simpleListView);
-
+        //simpleList=findViewById(R.id.simpleListView);
+//
     }
 
     public void loadData(DataSnapshot dataSnapshot) {

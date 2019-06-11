@@ -67,7 +67,7 @@ public class Alex extends AppCompatActivity implements AlexListener.OnReclyclerC
         progressBar=findViewById(R.id.progress);
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new AlexListener(this,myRecyclerView,this));
-        simpleList=findViewById(R.id.simpleListView);
+      //  simpleList=findViewById(R.id.simpleListView);
 
     }
 

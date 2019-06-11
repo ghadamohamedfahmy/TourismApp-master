@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -23,6 +24,7 @@ public class Luxor extends AppCompatActivity implements Luxor_Listener.OnReclycl
     ListView simpleList;
     RecyclerView myRecyclerView;
     Luxor_adapter myAdapter;
+
     List mRestaurants = new ArrayList<GetData>();
     private DatabaseReference mDatabase;
     private static final String TAG = "Luxor";
@@ -64,9 +66,12 @@ public class Luxor extends AppCompatActivity implements Luxor_Listener.OnReclycl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luxor);
         progressBar=findViewById(R.id.progress);
+
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new Luxor_Listener(this,myRecyclerView,this));
-        simpleList=findViewById(R.id.simpleListView);
+       // simpleList=findViewById(R.id.simpleListView);
+
+
 
     }
 
@@ -98,6 +103,7 @@ public class Luxor extends AppCompatActivity implements Luxor_Listener.OnReclycl
     public void onItemLongClick(View view, int postition) {
 
     }
+
 
 }
 

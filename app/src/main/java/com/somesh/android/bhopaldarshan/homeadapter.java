@@ -38,6 +38,7 @@ public homeadapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewTyp
 public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position) {
         // set the data in items
         GetData home =mhome.get(position);
+        holder.ratetext.setText(home.getRate());
         holder.placeTitle.setText(home.getTitle());
         // Picasso.with(context).load(restaurant.getImageUrl()).into(holder.placeImage);
        // Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
@@ -50,13 +51,14 @@ public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position
 
         }
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView placeTitle;
+    public TextView placeTitle,ratetext;
     public ImageView placeImage;
 
     public MyViewHolder(View view) {
         super(view);
         placeTitle=(TextView)view.findViewById(R.id.hometitle);
         placeImage=(ImageView)view.findViewById(R.id.homeimage);
+        ratetext=(TextView)view.findViewById(R.id.rate);
     }
 }
 

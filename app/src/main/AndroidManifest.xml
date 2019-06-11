@@ -15,7 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Luxor_Details"></activity>
+        <activity android:name=".comment_adapter"></activity>
+        <activity android:name=".Comments" />
+        <activity android:name=".Luxor_Details" />
         <activity android:name=".Other_Details" />
         <activity android:name=".Luxor_adapter" />
         <activity android:name=".Luxor" />
