@@ -22,6 +22,7 @@ public class GetData implements Serializable {
     String Name;
 
 
+
     public String getTitle() {
         return title;
     }

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -15,16 +16,17 @@ import com.bumptech.glide.request.RequestOptions;
 public class Cairo_Details extends AppCompatActivity {
 
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
     ImageView CairoImage;
 Button button ;
     Button mapButton;
     ImageButton mvideoButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cairo_details);
+
 
         address=findViewById(R.id.drop1);
         about=findViewById(R.id.drop3);
@@ -80,5 +82,6 @@ Button button ;
                 intent.putExtra("LNG",Double.valueOf(getDataCairo.getLongitude()));
                 startActivity(intent);            }
         });
+
     }
 }
