@@ -232,7 +232,7 @@ logout.setOnClickListener(new View.OnClickListener() {
     }
     @Override
     public void onItemClick(View view, int postition) {
-        Intent intent = new Intent(this, Details.class);
+        Intent intent = new Intent(this, homeDetails.class);
         intent.putExtra("HOME_TRANSFER", myAdapter.getRestaurant(postition));
         startActivity(intent);
     }
