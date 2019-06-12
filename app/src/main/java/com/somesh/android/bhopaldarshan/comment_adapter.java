@@ -28,21 +28,21 @@ public class comment_adapter extends  RecyclerView.Adapter <com.somesh.android.b
      private FirebaseUser firebaseUser;
      private FirebaseAuth firebaseAuth;
 
-     List<comments_list> mhome;
+    /* List<comments_list> mhome;
         Context context;
 
         public comment_adapter(Context context,List commentlist) {
             this.context=context;
             this.mhome = commentlist;
-        }
+        }*/
         @Override
         public int getItemCount() {
-            return mhome.size();
+            return 0;
         }
 
         @Override
         public com.somesh.android.bhopaldarshan.comment_adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext())
+           View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.commentadapter,parent, false);
             return new com.somesh.android.bhopaldarshan.comment_adapter.MyViewHolder(v);
         }
@@ -52,9 +52,9 @@ public class comment_adapter extends  RecyclerView.Adapter <com.somesh.android.b
             // set the data in items
 
             firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-            comments_list comments_listtt=mhome.get(position);
-            comments_list home =mhome.get(position);
-            holder.placeTitle.setText(home.getComment());
+           // comments_list comments_listtt=mhome.get(position);
+           // comments_list home =mhome.get(position);
+           // holder.placeTitle.setText(home.getComment());
 
             // Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
 

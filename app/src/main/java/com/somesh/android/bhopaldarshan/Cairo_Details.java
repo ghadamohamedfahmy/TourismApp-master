@@ -56,7 +56,7 @@ Button button ;
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Cairo_Details.this,Comments.class);
-            intent.putExtra("CAIRO_COMMENT",getDataCairo.getAbout());
+            intent.putExtra("CAIRO_COMMENT",getDataCairo.getName());
                 intent.putExtra("city","Cairo");
             startActivity(intent);
             }

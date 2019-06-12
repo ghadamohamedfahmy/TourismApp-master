@@ -4,23 +4,16 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -28,7 +21,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -56,6 +48,25 @@ private ListView mlist;
    // List mcomment = new ArrayList<comments_list>();
     FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
+    Intent intent=getIntent();
+    private String blog_post_id;
+
+    public Comments () {
+
+    }
+
+    public void setBlog_post_id(String blog_post_id) {
+        this.blog_post_id = blog_post_id;
+    }
+
+    public String getBlog_post_id() {
+        return blog_post_id;
+    }
+    /*final String City;
+    public Comments(final String blog_post_id,final String City){
+      this.blog_post_id=blog_post_id;
+this.City=City;
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +99,8 @@ private ListView mlist;
         Intent intent=getIntent();
      //   intent
        //blog_post_id = getIntent().getStringExtra("CAIRO_TRANSFER");
-        final String blog_post_id=(String) intent.getSerializableExtra("CAIRO_COMMENT");
-        final String City=(String) intent.getSerializableExtra("city");
+    //  final String blog_post_id=(String) intent.getSerializableExtra("City_COMMENT");
+      final String City=(String) intent.getSerializableExtra("city");
         //blog_post_id = getIntent().getSerializableExtra("Luxor_TRANSLATION");
         comment_field = findViewById(R.id.comment);
         comment_post_btn = findViewById(R.id.addcomment);
@@ -105,25 +116,53 @@ private ListView mlist;
        // comment_adapter = new comment_adapter(this,mcomment);
        // recyclerView.setAdapter(comment_adapter);
 ///****///
+        comment_post_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference Reference = database.getReference(City).child(blog_post_id).child("Comments");
+
+                String comment_message = comment_field.getText().toString();
+
+                Map<String, Object> commentsMap = new HashMap<>();
+                commentsMap.put("Comment", comment_message);
+                commentsMap.put("user_id", firebaseUser.getUid());
+
+                Reference.push().setValue(commentsMap);
+                comment_field.setText("");
+                Toast.makeText(Comments.this, "Comment added", Toast.LENGTH_SHORT).show();
+                /////*****////
+
+
+
+
+
+            }
+        });
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         mlist.setAdapter(arrayAdapter);
-        DatabaseReference read = database.getReference(City).child(blog_post_id);
-        read.child("Comments").addChildEventListener(new ChildEventListener() {
+        DatabaseReference read = database.getReference();
+        read.child(City).child(blog_post_id).child("Comments").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String value = dataSnapshot.getValue().toString();
+                mhome.add(value);
 
+                arrayAdapter.notifyDataSetChanged();
                // comments_list restaurant = dataSnapshot.getValue(comments_list.class);
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    comments_list comm = snapshot.getValue(comments_list.class);
+               /* for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                   // comments_list comm = snapshot.getValue(comments_list.class);
                     // mcomment.add(comm);
-                    // mhome.  restaurant.getUser_id().
-                    mhome.add(value);
-                    
+                    // mhome.add(restaurant).
+
+
+                   mhome.add(value);
+
                     arrayAdapter.notifyDataSetChanged();
 
-                }
+                }*/
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -149,29 +188,13 @@ private ListView mlist;
 
 
         //readcomment();
-        comment_post_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference Reference = database.getReference(City).child(blog_post_id).child("Comments");
 
-                String comment_message = comment_field.getText().toString();
-
-                Map<String, Object> commentsMap = new HashMap<>();
-                commentsMap.put("message", comment_message);
-                commentsMap.put("user_id", firebaseUser.getUid());
-
-                Reference.push().setValue(commentsMap);
-                comment_field.setText("");
-                Toast.makeText(Comments.this, "Comment added", Toast.LENGTH_SHORT).show();
                 /////*****////
 
 
 
 
 
-            }
-        });
 
 
     }

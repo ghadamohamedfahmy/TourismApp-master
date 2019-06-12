@@ -75,6 +75,7 @@ public class Luxor_Details extends AppCompatActivity {
                 Intent intent = new Intent(Luxor_Details.this,Comments.class);
                 intent.putExtra("City_COMMENT",getDataLuxor.getAbout());
                 intent.putExtra("city","Luxor");
+
                 startActivity(intent);
             }
         }));

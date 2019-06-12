@@ -37,7 +37,7 @@ public class GetData implements Serializable {
 
     public void setAbout(String about) {   this.about = about;}
 
-    public void setRate(String rate) {  this.rate = rate;  }
+   public void setRate(String rate) {  this.rate = rate;  }
 
     public String getRate() { return rate; }
 

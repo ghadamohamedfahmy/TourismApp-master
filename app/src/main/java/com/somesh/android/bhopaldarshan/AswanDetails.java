@@ -72,7 +72,8 @@ public class AswanDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AswanDetails.this,Comments.class);
-                intent.putExtra("City_COMMENT",getDataAswan.getAbout());
+
+                intent.putExtra("City_COMMENT",getDataAswan.getName());
                 intent.putExtra("city","Aswan");
                 startActivity(intent);
             }

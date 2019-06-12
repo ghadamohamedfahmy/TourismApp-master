@@ -15,17 +15,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".listview"></activity>
         <activity android:name=".Comments" />
         <activity android:name=".Luxor_Details" />
         <activity android:name=".Other_Details" />
-
         <activity android:name=".Luxor" />
-
         <activity android:name=".others" />
         <activity android:name=".showvideo" />
         <activity android:name=".Register" />
-
         <activity android:name=".home" />
         <activity android:name=".homeDetails" />
         <activity

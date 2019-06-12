@@ -168,7 +168,7 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
 button.setOnClickListener((new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(home.this,Comments.class);
+        Intent intent = new Intent(home.this,listview.class);
 
         startActivity(intent);
     }

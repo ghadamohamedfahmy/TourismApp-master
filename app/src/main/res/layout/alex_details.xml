@@ -179,44 +179,34 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/drop5" />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="MissingConstraints"
-                android:textColor="@android:color/background_light"
+            <Button
+                android:id="@+id/addcomment"
+                android:layout_width="61dp"
+                android:layout_height="57dp"
+                android:layout_weight="1"
+                android:background="@drawable/comment"
+                android:scaleType="centerInside"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/drop5">
+                app:layout_constraintTop_toTopOf="@+id/mapButton"
+                tools:ignore="NotSibling" />
 
-                <EditText
-                    android:id="@+id/comment"
-                    android:layout_width="320dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="@string/addcomment"
-
-                    android:inputType="textMultiLine"
-                    tools:ignore="MissingConstraints"
-
-
-                    />
-
-                <Button
-                    android:id="@+id/addcomment"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/comment"
-                    android:scaleType="centerInside" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/enterco"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/addcomment"
+                android:textColor="@android:color/background_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addcomment" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontal"
@@ -234,52 +224,66 @@
 
                 </LinearLayout>
             </HorizontalScrollView>
-
             <Button
                 android:id="@+id/mapButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/map_icon"
-                app:layout_constraintHorizontal_bias="0.22"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_width="58dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:text="Location"
                 android:textColor="@android:color/background_light"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.21"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mapButton" />
+
+
             <ImageButton
                 android:id="@+id/videoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
+                android:layout_width="52dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/quantum_ic_play_circle_filled_grey600_36"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.833"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:srcCompat="@drawable/mr_media_play_light"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="271dp"
-                tools:layout_editor_absoluteY="208dp" />
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/playvedio"
-                android:textColor="#FFFFFF"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="262dp"
-                tools:layout_editor_absoluteY="270dp" />
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
 
+                android:layout_marginLeft="8dp"
+
+
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/playvedio"
+
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="@+id/head1"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/videoButton"
+                tools:ignore="MissingConstraints" />
 
         </android.support.constraint.ConstraintLayout>
 
