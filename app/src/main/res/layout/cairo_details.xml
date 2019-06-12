@@ -67,7 +67,6 @@ tools:context="com.somesh.android.bhopaldarshan.Cairo_Details">
                 android:id="@+id/head2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:paddingTop="20dp"
                 android:text="@string/rate"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -75,6 +74,7 @@ tools:context="com.somesh.android.bhopaldarshan.Cairo_Details">
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/drop1" />
 
@@ -274,6 +274,39 @@ tools:context="com.somesh.android.bhopaldarshan.Cairo_Details">
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/videoButton"
                 tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/addrate"
+                android:layout_width="42dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rating"
+                app:layout_constraintBottom_toTopOf="@+id/drop3"
+                app:layout_constraintEnd_toEndOf="@+id/head2"
+                app:layout_constraintHorizontal_bias="0.828"
+                app:layout_constraintStart_toStartOf="@+id/head2"
+                app:layout_constraintTop_toTopOf="@+id/drop1"
+                app:layout_constraintVertical_bias="0.333" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/addrate"
+                android:textColor="#D7FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/drop2"
+                app:layout_constraintEnd_toEndOf="@+id/drop2"
+                app:layout_constraintHorizontal_bias="0.891"
+                app:layout_constraintStart_toStartOf="@+id/drop2"
+                app:layout_constraintTop_toTopOf="@+id/head2"
+                app:layout_constraintVertical_bias="1.0" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

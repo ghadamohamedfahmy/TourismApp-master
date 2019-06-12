@@ -14,12 +14,14 @@ import com.bumptech.glide.request.RequestOptions;
 
 public class Luxor_Details extends AppCompatActivity {
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
     ImageView LuxorImage;
-
+    average home=new average();
     Button mapButton;
-    Button button ;
+    Button button ,ratebutton ;
+    TextView getcounteeer;
     ImageButton mvideoButton;
+  private   int counter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,8 @@ public class Luxor_Details extends AppCompatActivity {
         rate=findViewById(R.id.drop2);
         //comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
-
+        getcounteeer = findViewById(R.id.textView3);
+        ratebutton = findViewById(R.id.addrate);
         LuxorImage=findViewById(R.id.imageView);
 
         Intent intent = getIntent();
@@ -72,12 +75,31 @@ public class Luxor_Details extends AppCompatActivity {
         button.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Luxor_Details.this,Comments.class);
+                Intent intent = new Intent(Luxor_Details.this,commentLuxor.class);
                 intent.putExtra("LUXOR_COMMENT",getDataLuxor.getName());
                 intent.putExtra("city","Luxor");
 
                 startActivity(intent);
             }
         }));
+        ratebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                obj.setX("Luxor");
+                obj.setY(getDataLuxor.getName());
+                obj.setAdd(Double.parseDouble(getDataLuxor.getRate()));
+                obj.rate();
+                home.setX("home");
+                home.setY(getDataLuxor.getName());
+                home.setAdd(Double.parseDouble(getDataLuxor.getRate()));
+                home.rate();
+                counter++;
+                if(counter<=10&&counter>0) {
+                    getcounteeer.setText(counter + "");
+                }else{ getcounteeer.setText(" that's enough for rate 10");}
+            }
+        });
     }
 }

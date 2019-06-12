@@ -27,8 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class commentAlex extends AppCompatActivity {
-
+public class commenthome extends AppCompatActivity {
     private Toolbar commentToolbar;
 
     private EditText comment_field;
@@ -52,7 +51,7 @@ public class commentAlex extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comment_alex);
+        setContentView(R.layout.activity_commenthome);
         /**/
         mlist = findViewById(R.id.lista);
         final ArrayAdapter<String> arrayAdapter =new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,mhome);
@@ -76,7 +75,7 @@ public class commentAlex extends AppCompatActivity {
         Intent intent=getIntent();
         //   intent
         //blog_post_id = getIntent().getStringExtra("CAIRO_TRANSFER");
-        final String blog_post_id=(String) intent.getSerializableExtra("ALEX_COMMENT");
+        final String blog_post_id=(String) intent.getSerializableExtra("HOME_COMMENT");
         final String City=(String) intent.getSerializableExtra("city");
         //blog_post_id = getIntent().getSerializableExtra("Luxor_TRANSLATION");
         comment_field = findViewById(R.id.comment);
@@ -98,7 +97,7 @@ public class commentAlex extends AppCompatActivity {
 
                 Reference.push().setValue(commentsMap);
                 comment_field.setText("");
-                Toast.makeText(com.somesh.android.bhopaldarshan.commentAlex.this, "Comment added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(com.somesh.android.bhopaldarshan.commenthome.this, "Comment added", Toast.LENGTH_SHORT).show();
                 /////*****////
 
             }

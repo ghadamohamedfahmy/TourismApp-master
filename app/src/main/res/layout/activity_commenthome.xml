@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommentAswan">
+    tools:context=".commenthome">
     <android.support.v7.widget.Toolbar
         android:id="@+id/comment_toolbar"
         android:layout_width="match_parent"
@@ -40,7 +40,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_alignTop="@+id/comment_list"
+        android:layout_marginTop="337dp"
         android:orientation="horizontal"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -50,7 +51,7 @@
 
         <EditText
             android:id="@+id/comment"
-            android:layout_width="312dp"
+            android:layout_width="313dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

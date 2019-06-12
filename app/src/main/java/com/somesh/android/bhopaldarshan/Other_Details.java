@@ -15,12 +15,15 @@ import com.bumptech.glide.request.RequestOptions;
 public class Other_Details extends AppCompatActivity {
 
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
+    average home=new average();
     ImageView OtherImage;
 
     Button mapButton;
-    Button button ;
-
+    Button button ,ratebutton ;
+    TextView getcounteeer;
+    ImageButton mvideoButton;
+   private   int counter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,8 @@ public class Other_Details extends AppCompatActivity {
         rate=findViewById(R.id.drop2);
         comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
+        getcounteeer = findViewById(R.id.textView3);
+        ratebutton = findViewById(R.id.addrate);
 
         ImageButton mvideoButton;
         OtherImage=findViewById(R.id.imageView);
@@ -80,5 +85,24 @@ public class Other_Details extends AppCompatActivity {
                 startActivity(intent);
             }
         }));
+        ratebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                obj.setX("Others");
+                obj.setY(getDataOther.getName());
+                obj.setAdd(Double.parseDouble(getDataOther.getRate()));
+                obj.rate();
+
+                home.setX("home");
+                home.setY(getDataOther.getName());
+                home.setAdd(Double.parseDouble(getDataOther.getRate()));
+                home.rate();                counter++;
+                if(counter<=10&&counter>0) {
+                    getcounteeer.setText(counter + "");
+                }else{ getcounteeer.setText(" that's enough for rate 10");}
+            }
+        });
     }
 }

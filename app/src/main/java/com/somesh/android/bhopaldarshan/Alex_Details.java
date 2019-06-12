@@ -1,7 +1,6 @@
 package com.somesh.android.bhopaldarshan;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,18 +10,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class Details extends AppCompatActivity {
+public class Alex_Details extends AppCompatActivity {
 
-    private static final String TAG = "Details";
+    private static final String TAG = "Alex_Details";
 
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
+    average home=new average();
     ImageView AlexImage;
     Button button ;
-    Button mapButton;
+    Button mapButton,ratebutton ;
+    TextView getcounteeer;
     ImageButton mvideoButton;
+   private int counter=0;
     LinearLayout linearLayout;
 
     @Override
@@ -35,7 +38,8 @@ public class Details extends AppCompatActivity {
         rate=findViewById(R.id.drop2);
         comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
-
+        getcounteeer = findViewById(R.id.textView3);
+        ratebutton = findViewById(R.id.addrate);
         AlexImage =findViewById(R.id.imageView);
         linearLayout=findViewById(R.id.linearlayout);
         Intent intent = getIntent();
@@ -81,12 +85,32 @@ public class Details extends AppCompatActivity {
         button.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Details.this,commentAlex.class);
-                intent.putExtra("ALEX_DETAILS",getData.getName());
+                Intent intent = new Intent(Alex_Details.this,commentAlex.class);
+                intent.putExtra("ALEX_COMMENT",getData.getName());
                 intent.putExtra("city","Alex");
+
                 startActivity(intent);
             }
         }));
+        ratebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                obj.setX("Alex");
+                obj.setY(getData.getName());
+                obj.setAdd(Double.parseDouble(getData.getRate()));
+                obj.rate();
+                home.setX("home");
+                home.setY(getData.getName());
+                home.setAdd(Double.parseDouble(getData.getRate()));
+                home.rate();
+                counter++;
+                if(counter<=10&&counter>0) {
+                    getcounteeer.setText(counter + "");
+                }else{ getcounteeer.setText(" that's enough for rate 10");}
+            }
+        });
     }
 
 }

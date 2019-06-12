@@ -16,12 +16,14 @@ public class homeDetails extends AppCompatActivity {
 
 
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
     ImageView LuxorImage;
 
     Button mapButton;
-    Button button ;
+    Button button ,ratebutton ;
+    TextView getcounteeer;
     ImageButton mvideoButton;
+    private int counter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,8 @@ public class homeDetails extends AppCompatActivity {
         rate=findViewById(R.id.drop2);
         //comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
-
+        getcounteeer = findViewById(R.id.textView3);
+        ratebutton = findViewById(R.id.addrate);
         LuxorImage=findViewById(R.id.imageView);
 
         Intent intent = getIntent();
@@ -74,11 +77,26 @@ public class homeDetails extends AppCompatActivity {
         button.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(homeDetails.this,Comments.class);
-                intent.putExtra("home_COMMENT",gethomeData.getAbout());
+                Intent intent = new Intent(homeDetails.this,commenthome.class);
+                intent.putExtra("HOME_COMMENT",gethomeData.getName());
                 intent.putExtra("city","home");
                 startActivity(intent);
             }
         }));
+        ratebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                obj.setX("home");
+                obj.setY(gethomeData.getName());
+                obj.setAdd(Double.parseDouble(gethomeData.getRate()));
+                obj.rate();
+                counter++;
+                if(counter<=10&&counter>0) {
+                    getcounteeer.setText(counter + "");
+                }else{ getcounteeer.setText(" that's enough for rate 10");}
+            }
+        });
     }
 }

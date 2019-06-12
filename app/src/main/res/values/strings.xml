@@ -6,6 +6,7 @@
     <string name="email">username </string>
     <string name="pass">password </string>
     <string name="signgmail">Sign IN Gmail </string>
+    <string name="addrate"> Rating click(1:10) </string>
     <string name="login">login </string>
     <string name="signup">Sign Up </string>
     <string name="playvedio"> Show Video </string>

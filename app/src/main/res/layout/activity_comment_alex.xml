@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".commentAlex">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/comment_toolbar"
         android:layout_width="match_parent"
@@ -50,7 +51,7 @@
 
         <EditText
             android:id="@+id/comment"
-            android:layout_width="334dp"
+            android:layout_width="305dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

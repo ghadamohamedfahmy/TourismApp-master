@@ -15,9 +15,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".commentOther"></activity>
-        <activity android:name=".commentLuxor" />
+        <activity android:name=".commenthome"></activity>
         <activity android:name=".commentAlex" />
+        <activity android:name=".commentOther" />
+        <activity android:name=".commentLuxor" />
         <activity android:name=".CommentAswan" />
         <activity android:name=".Comments" />
         <activity android:name=".Luxor_Details" />
@@ -66,7 +67,7 @@
             android:label="@string/title_activity_visiting_place_detail"
             android:theme="@style/AppTheme" />
         <activity android:name=".Cairo_Details" />
-        <activity android:name=".Details" />
+        <activity android:name=".Alex_Details" />
     </application>
 
 </manifest>

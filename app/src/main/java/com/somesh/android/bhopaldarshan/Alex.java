@@ -90,7 +90,7 @@ public class Alex extends AppCompatActivity implements AlexListener.OnReclyclerC
 
     @Override
     public void onItemClick(View view, int postition) {
-        Intent intent = new Intent(this, Details.class);
+        Intent intent = new Intent(this, Alex_Details.class);
         intent.putExtra("ALEX_TRANSFER", myAdapter.getAlexData(postition));
         startActivity(intent);
     }

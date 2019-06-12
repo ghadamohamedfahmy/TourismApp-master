@@ -16,11 +16,14 @@ public class AswanDetails extends AppCompatActivity {
     private static final String TAG = "AswanDetails";
 
     TextView address,about,rate,websites,comments;
-
+    average obj=new average();
     ImageView AswanImage;
-    Button button ;
+    Button button ,ratebutton ;
     Button mapButton;
+    TextView getcounteeer;
+    average home=new average();
     ImageButton mvideoButton;
+   private int counter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class AswanDetails extends AppCompatActivity {
         rate=findViewById(R.id.drop2);
         comments=findViewById(R.id.drop5);
         websites=findViewById(R.id.drop4);
+        getcounteeer = findViewById(R.id.textView3);
+        ratebutton = findViewById(R.id.addrate);
         AswanImage =findViewById(R.id.imageView);
         Intent intent = getIntent();
         final GetData getDataAswan = (GetData)intent.getSerializableExtra("ASWAN_TRANSLATION");
@@ -79,5 +84,24 @@ public class AswanDetails extends AppCompatActivity {
             }
         }));
 
+        ratebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                obj.setX("Aswan");
+                obj.setY(getDataAswan.getName());
+                obj.setAdd(Double.parseDouble(getDataAswan.getRate()));
+                obj.rate();
+                home.setX("home");
+                home.setY(getDataAswan.getName());
+                home.setAdd(Double.parseDouble(getDataAswan.getRate()));
+                home.rate();
+                counter++;
+                if(counter<=10&&counter>0) {
+                    getcounteeer.setText(counter + "");
+                }else{ getcounteeer.setText(" that's enough for rate 10");}
+            }
+        });
     }
 }
