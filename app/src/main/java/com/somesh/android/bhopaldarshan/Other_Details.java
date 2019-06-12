@@ -74,8 +74,8 @@ public class Other_Details extends AppCompatActivity {
         button.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Other_Details.this,Comments.class);
-                intent.putExtra("City_COMMENT",getDataOther.getAbout());
+                Intent intent = new Intent(Other_Details.this,commentOther.class);
+                intent.putExtra("OTHERCOMMENT",getDataOther.getName());
                 intent.putExtra("city","Others");
                 startActivity(intent);
             }

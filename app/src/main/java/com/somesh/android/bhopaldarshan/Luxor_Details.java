@@ -73,7 +73,7 @@ public class Luxor_Details extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Luxor_Details.this,Comments.class);
-                intent.putExtra("City_COMMENT",getDataLuxor.getAbout());
+                intent.putExtra("LUXOR_COMMENT",getDataLuxor.getName());
                 intent.putExtra("city","Luxor");
 
                 startActivity(intent);

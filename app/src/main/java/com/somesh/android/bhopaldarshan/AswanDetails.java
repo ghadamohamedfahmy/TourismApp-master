@@ -71,9 +71,9 @@ public class AswanDetails extends AppCompatActivity {
         button.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AswanDetails.this,Comments.class);
+                Intent intent = new Intent(AswanDetails.this,CommentAswan.class);
 
-                intent.putExtra("City_COMMENT",getDataAswan.getName());
+                intent.putExtra("ASWAN_COMMENT",getDataAswan.getName());
                 intent.putExtra("city","Aswan");
                 startActivity(intent);
             }
