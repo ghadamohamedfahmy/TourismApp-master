@@ -44,6 +44,18 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="205dp"
+                android:layout_marginBottom="80dp"
+                android:hint="@string/retrievepass"
+                android:text="0 Comments"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/rate"
                 android:layout_width="127dp"
                 android:layout_height="wrap_content"
@@ -53,19 +65,6 @@
                 android:hint="@string/retrievepass"
                 android:text="0 Rate"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="18sp"
-                />
-
-            <TextView
-                android:id="@+id/comments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="240dp"
-                android:layout_marginTop="205dp"
-                android:layout_marginBottom="80dp"
-                android:hint="@string/retrievepass"
-                android:text="0 Comments"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp" />
 

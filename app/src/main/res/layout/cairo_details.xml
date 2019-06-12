@@ -137,6 +137,7 @@ tools:context="com.somesh.android.bhopaldarshan.Cairo_Details">
                 android:layout_marginTop="60dp"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
+                android:autoLink="all"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/head4" />

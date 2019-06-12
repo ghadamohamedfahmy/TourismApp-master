@@ -88,7 +88,7 @@ public class commenthome extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference Reference = database.getReference(City).child(blog_post_id).child("Comments");
-
+                DatabaseReference hooome = database.getReference("home").child(blog_post_id).child("Comments");
                 String comment_message = comment_field.getText().toString();
 
                 Map<String, Object> commentsMap = new HashMap<>();
@@ -96,6 +96,7 @@ public class commenthome extends AppCompatActivity {
                 commentsMap.put("user_id", firebaseUser.getUid());
 
                 Reference.push().setValue(commentsMap);
+                hooome.push().setValue(commentsMap);
                 comment_field.setText("");
                 Toast.makeText(com.somesh.android.bhopaldarshan.commenthome.this, "Comment added", Toast.LENGTH_SHORT).show();
                 /////*****////

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position
         // set the data in items
         GetData home =mhome.get(position);
         holder.ratetext.setText(home.getRate());
+  //  holder.comtext.setText(home.getCoun());
         holder.placeTitle.setText(home.getTitle());
         // Picasso.with(context).load(restaurant.getImageUrl()).into(holder.placeImage);
        // Toast.makeText(context, home.getImageUrl(), Toast.LENGTH_LONG).show();
@@ -51,14 +53,18 @@ public void onBindViewHolder(homeadapter.MyViewHolder holder, final int position
 
         }
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView placeTitle,ratetext;
+    public TextView placeTitle,ratetext,comtext;
     public ImageView placeImage;
 
     public MyViewHolder(View view) {
         super(view);
-        placeTitle=(TextView)view.findViewById(R.id.hometitle);
-        placeImage=(ImageView)view.findViewById(R.id.homeimage);
-        ratetext=(TextView)view.findViewById(R.id.rate);
+        placeTitle = (TextView) view.findViewById(R.id.hometitle);
+        placeImage = (ImageView) view.findViewById(R.id.homeimage);
+        ratetext = (TextView) view.findViewById(R.id.rate);
+       // comtext = (TextView) view.findViewById(R.id.comments);
+
+
+
     }
 }
 

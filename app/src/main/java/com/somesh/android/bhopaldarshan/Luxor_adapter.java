@@ -41,6 +41,7 @@ public void onBindViewHolder(Luxor_adapter.MyViewHolder holder, final int positi
         // set the data in items
         GetData getData = mGetData.get(position);
         holder.placeTitle.setText(getData.getTitle());
+    holder.ratetext.setText(getData.getRate());
         // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
         //Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
@@ -52,12 +53,13 @@ public void onBindViewHolder(Luxor_adapter.MyViewHolder holder, final int positi
 
         }
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView placeTitle;
+    public TextView placeTitle,ratetext;
     public ImageView placeImage;
 
     public MyViewHolder(View view) {
         super(view);
         placeTitle=(TextView)view.findViewById(R.id.hometitle);
+        ratetext=(TextView)view.findViewById(R.id.rate);
         placeImage=(ImageView)view.findViewById(R.id.homeimage);
     }
 }

@@ -26,27 +26,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
+                    android:layout_height="51dp"
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/user"
-                        android:layout_width="55dp"
-                        android:layout_height="match_parent"
+                        android:id="@+id/logout"
+                        android:layout_width="67dp"
+                        android:layout_height="49dp"
 
                         android:background="@drawable/ic_group_collapse_00"
                         android:scaleType="fitEnd"
-                        android:src="@drawable/users" />
-
-                    <ImageButton
-                        android:id="@+id/logout"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="300dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/ic_group_collapse_09"
-                        android:scaleType="fitStart"
-                        app:srcCompat="@drawable/logout" />
+                        android:src="@drawable/logout" />
 
                 </LinearLayout>
 

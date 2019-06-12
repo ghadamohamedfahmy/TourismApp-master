@@ -42,6 +42,7 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
     public void onBindViewHolder(AlexAdapter.MyViewHolder holder, final int position) {
         // set the data in items
         GetData getData = mGetData.get(position);
+        holder.ratetext.setText(getData.getRate());
       holder.placeTitle.setText(getData.getTitle());
        // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
         //Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
@@ -54,13 +55,15 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
 
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView placeTitle;
+        public TextView placeTitle,ratetext;
         public ImageView placeImage;
 
         public MyViewHolder(View view) {
             super(view);
             placeTitle=(TextView)view.findViewById(R.id.hometitle);
             placeImage=(ImageView)view.findViewById(R.id.homeimage);
+            ratetext = (TextView) view.findViewById(R.id.rate);
+
         }
     }
 

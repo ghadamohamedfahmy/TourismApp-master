@@ -42,6 +42,7 @@ public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder
         // set the data in items
         GetData getDataCairo = mGetDataCairos.get(position);
         holder.placeTitle.setText(getDataCairo.getTitle());
+        holder.ratetext.setText(getDataCairo.getRate());
         // loading album cover using Glide library
         Glide.with(context)
                 .load(getDataCairo.getImageUrl())
@@ -51,12 +52,13 @@ public class CairoAdapter extends RecyclerView.Adapter<CairoAdapter.MyViewHolder
                 .into(holder.placeImage);
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView placeTitle;
+        public TextView placeTitle,ratetext;
         public ImageView placeImage;
 
         public MyViewHolder(View view) {
             super(view);
             placeTitle=(TextView)view.findViewById(R.id.hometitle);
+            ratetext=(TextView)view.findViewById(R.id.rate);
             placeImage=(ImageView)view.findViewById(R.id.homeimage);
         }
     }

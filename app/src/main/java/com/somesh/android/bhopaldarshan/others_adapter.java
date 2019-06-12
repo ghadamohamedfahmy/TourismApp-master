@@ -41,6 +41,7 @@ public class others_adapter extends RecyclerView.Adapter<others_adapter.MyViewHo
         // set the data in items
         GetData getData = mGetData.get(position);
         holder.placeTitle.setText(getData.getTitle());
+        holder.ratetext.setText(getData.getRate());
         // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
        // Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();
         Glide.with(context)
@@ -52,13 +53,15 @@ public class others_adapter extends RecyclerView.Adapter<others_adapter.MyViewHo
 
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView placeTitle;
+        public TextView placeTitle,ratetext;
         public ImageView placeImage;
 
         public MyViewHolder(View view) {
             super(view);
             placeTitle=(TextView)view.findViewById(R.id.hometitle);
             placeImage=(ImageView)view.findViewById(R.id.homeimage);
+
+            ratetext=(TextView)view.findViewById(R.id.rate);
         }
     }
 

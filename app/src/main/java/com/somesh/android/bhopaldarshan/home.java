@@ -1,5 +1,6 @@
 package com.somesh.android.bhopaldarshan;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -36,7 +37,7 @@ import java.util.Map;
 
 public class home extends AppCompatActivity implements home_listener.OnReclyclerClickListener {
     private Spinner spinner;
-    private ImageButton button,logout;
+    private ImageButton button,logout,imageraaate,commeeent;
     private TextView rate;
     private ProgressBar mProgressCircle;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -49,6 +50,7 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
     ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();
     private static final String TAG = "home";
 
+    @SuppressLint("WrongViewCast")
     @RequiresApi (api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +91,15 @@ public class home extends AppCompatActivity implements home_listener.OnReclycler
         ConnectivityManager conMgr =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = conMgr.getActiveNetworkInfo();
         mProgressCircle = findViewById(R.id.progress_circle);
-        button = findViewById(R.id.user);
+        button = findViewById(R.id.logout);
         rate = findViewById(R.id.rate);
         spinner = findViewById(R.id.spinner1);
         myRecyclerView =(RecyclerView)findViewById(R.id.recycler_view);
         myRecyclerView.addOnItemTouchListener(new home_listener(this,myRecyclerView,this));
        // simpleList=findViewById(R.id.simpleListView);
         logout = findViewById(R.id.logout);
+
+
 
 
         setupFirebaseListener();

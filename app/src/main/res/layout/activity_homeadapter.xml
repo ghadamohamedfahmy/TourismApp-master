@@ -49,7 +49,7 @@
                 android:layout_marginLeft="49dp"
                 android:layout_marginTop="205dp"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/retrievepass"
+
                 android:text="0 Rate"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/cardview_dark_background"

@@ -31,7 +31,7 @@ import java.util.Map;
 public class Comments extends AppCompatActivity {
 
     private Toolbar commentToolbar;
-
+int count=0;
     private EditText comment_field;
     private ImageButton comment_post_btn;
     private TextView commentview;
@@ -90,14 +90,17 @@ private ListView mlist;
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference Reference = database.getReference(City).child(blog_post_id).child("Comments");
-
+                DatabaseReference hooome = database.getReference("home").child(blog_post_id).child("Comments");
                 String comment_message = comment_field.getText().toString();
+//GetData x=new GetData();
 
                 Map<String, Object> commentsMap = new HashMap<>();
                 commentsMap.put("Comment", comment_message);
                 commentsMap.put("user_id", firebaseUser.getUid());
-
+                count++;
+              //  x.setCoun(count);
                 Reference.push().setValue(commentsMap);
+                hooome.push().setValue(commentsMap);
                 comment_field.setText("");
                 Toast.makeText(Comments.this, "Comment added", Toast.LENGTH_SHORT).show();
                 /////*****////
@@ -113,7 +116,7 @@ private ListView mlist;
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String value = dataSnapshot.getValue().toString();
                 mhome.add(value);
-
+//mlist.getAdapter().getCount();
                 arrayAdapter.notifyDataSetChanged();
                // comments_list restaurant = dataSnapshot.getValue(comments_list.class);
                /* for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

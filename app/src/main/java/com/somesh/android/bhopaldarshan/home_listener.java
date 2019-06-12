@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class home_listener extends RecyclerView.SimpleOnItemTouchListener{
     private static final String TAG = "homelistenenr";
+    public ImageButton imageraaate,commeeent;
 
     interface OnReclyclerClickListener{
         void onItemClick(View view, int postition);
@@ -26,6 +28,7 @@ public class home_listener extends RecyclerView.SimpleOnItemTouchListener{
                 View childVeiw = recyclerView.findChildViewUnder(e.getX(),e.getY());
                 if(childVeiw!=null&&mListener!=null){
                     mListener.onItemClick(childVeiw,recyclerView.getChildAdapterPosition(childVeiw));
+
                 }
                 return true;
             }

@@ -54,7 +54,17 @@ public class Other_Details extends AppCompatActivity {
         rate.setText(getDataOther.getRate());
         comments.setText(getDataOther.getComments());
         websites.setText(getDataOther.getWebsities());
+        mvideoButton = findViewById(R.id.videoButton);
+        mvideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(), showvideo.class);
+
+
+                startActivity(intent);
+            }
+        });
         mapButton=(Button) findViewById(R.id.mapButton);
 
         mapButton.setOnClickListener(new View.OnClickListener() {

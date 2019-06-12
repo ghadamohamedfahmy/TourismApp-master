@@ -21,7 +21,15 @@ public class GetData implements Serializable {
     String comments;
     String Name;
 
+int coun;
 
+    public int getCoun() {
+        return coun;
+    }
+
+    public void setCoun(int coun) {
+        this.coun = coun;
+    }
 
     public String getTitle() {
         return title;

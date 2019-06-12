@@ -10,14 +10,17 @@
 
     <EditText
         android:id="@+id/reg_email"
-        android:layout_width="253dp"
-        android:layout_height="60dp"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="100dp"
 
         android:ems="10"
         android:hint="@string/enteremail"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/reg_pass"
@@ -28,7 +31,9 @@
         android:ems="10"
 
         android:hint="@string/pass"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/reg_confirm_pass"
@@ -39,7 +44,9 @@
 
         android:ems="10"
         android:hint="@string/retrievepass"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/sign"

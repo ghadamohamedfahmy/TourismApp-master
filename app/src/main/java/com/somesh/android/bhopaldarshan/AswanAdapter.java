@@ -44,6 +44,7 @@ class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
         //holder.placeTitle.setText((Integer) aswanlist.get(position));
         GetData getDataAswan = aswanlist.get(position);
         holder.placeTitle.setText(getDataAswan.getTitle());
+        holder.ratetext.setText(getDataAswan.getRate());
         // loading album cover using Glide library
         Glide.with(context)
                 .load(getDataAswan.getImageUrl())
@@ -53,13 +54,14 @@ class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
                 .into(holder.placeImage);
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView placeTitle;
+        public TextView placeTitle,ratetext;
         public ImageView placeImage;
 
         public MyViewHolder(View view) {
             super(view);
             placeTitle=(TextView)view.findViewById(R.id.hometitle);
             placeImage=(ImageView)view.findViewById(R.id.homeimage);
+            ratetext=(TextView)view.findViewById(R.id.rate);
         }
     }
 
