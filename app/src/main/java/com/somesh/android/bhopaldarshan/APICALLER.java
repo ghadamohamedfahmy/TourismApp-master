@@ -17,11 +17,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APICALLER extends AppCompatActivity {
     private TextView textViewResult;
-
+    private  String comment="i love it";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.api);
+
 
         textViewResult = findViewById(R.id.text_view_result);
         Gson gson = new GsonBuilder()
@@ -34,9 +35,10 @@ public class APICALLER extends AppCompatActivity {
 
         jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
 
-        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts();
+        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts("/api/values/"+comment);
 
         call.enqueue(new Callback<List<ApiModel>>() {
+
             @Override
             public void onResponse(Call<List<ApiModel>> call, Response<List<ApiModel>> response) {
 
