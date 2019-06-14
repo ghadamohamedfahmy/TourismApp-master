@@ -30,7 +30,7 @@
         <activity android:name=".home" />
         <activity android:name=".homeDetails" />
         <activity
-            android:name=".MainActivity"
+            android:name=".APICALLER"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
