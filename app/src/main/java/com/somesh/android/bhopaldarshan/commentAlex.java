@@ -21,11 +21,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class commentAlex extends AppCompatActivity {
 
@@ -33,6 +41,10 @@ public class commentAlex extends AppCompatActivity {
 
     private EditText comment_field;
     private ImageButton comment_post_btn;
+    String content1="" ;
+    String comment1;
+    average objratehome =new average();
+    average objrate =new average();
     private TextView commentview;
     /***/
     private ListView mlist;
@@ -40,14 +52,9 @@ public class commentAlex extends AppCompatActivity {
     private ArrayList<String> muser= new ArrayList<>();
 //***//
 
-    //  private CommentsRecyclerAda commentsRecyclerAdapter;
-    //  private List<Comments> commentsList;
-    // List mcomment = new ArrayList<comments_list>();
     FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
     Intent intent=getIntent();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +75,7 @@ public class commentAlex extends AppCompatActivity {
             }
         });
 
-
         firebaseAuth = FirebaseAuth.getInstance();
-
 
         firebaseUser = firebaseAuth.getInstance().getCurrentUser();
         Intent intent=getIntent();
@@ -82,21 +87,63 @@ public class commentAlex extends AppCompatActivity {
         comment_field = findViewById(R.id.comment);
         comment_post_btn = findViewById(R.id.addcomment);
 
-
-
         comment_post_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference Reference = database.getReference(City).child(blog_post_id).child("Comments");
                 DatabaseReference hooome = database.getReference("home").child(blog_post_id).child("Comments");
-
                 String comment_message = comment_field.getText().toString();
-
                 Map<String, Object> commentsMap = new HashMap<>();
                 commentsMap.put("Comment", comment_message);
-                commentsMap.put("user_id", firebaseUser.getUid());
 
+                Gson gson = new GsonBuilder()
+                        .setLenient()
+                        .create();
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://testapicore.conveyor.cloud/api/values/")
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .build();
+
+                jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
+
+                Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comment_message);
+
+                call.enqueue(new Callback<List<ApiModel>>() {
+
+                    @Override
+                    public void onResponse(Call<List<ApiModel>> call, Response<List<ApiModel>> response) {
+
+                        if (!response.isSuccessful()) {
+                            comment1+=response.code();
+                            comment_field.setText("Code: " + response.code());
+                            return;
+                        }
+                        List<ApiModel> posts = response.body();
+
+                        for (ApiModel post : posts) {
+
+                            content1 +=post.getCategory();
+                            int x= Integer.parseInt(content1);
+                            Double y= new Double(x);
+                            objrate.setX("Alex");
+                            objrate.setY(blog_post_id);
+                            objrate.setAdd(y);
+                            objrate.rate();
+                            objratehome.setX("home");
+                            objratehome.setY(blog_post_id);
+                            objratehome.setAdd(y);
+                            objratehome.rate();
+                            return ;
+
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<ApiModel>> call, Throwable t) {
+                        comment_field.setText(t.getMessage());
+
+                    }
+                });
                 Reference.push().setValue(commentsMap);
                 hooome.push().setValue(commentsMap);
                 comment_field.setText("");

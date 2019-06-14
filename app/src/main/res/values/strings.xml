@@ -1,6 +1,6 @@
 <resources>
+    <string name="app_name">Touristy</string>
 
-    <string name="app_name">ViewBhopal</string>
     <string name="addrate"> Rating click(1:10) </string>
     <string name="select_country">select country</string>
     <string name="place">place</string>

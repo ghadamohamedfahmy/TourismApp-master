@@ -21,6 +21,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 import java.util.ArrayList;
@@ -28,13 +30,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Comments extends AppCompatActivity {
 
     private Toolbar commentToolbar;
 int count=0;
+
     private EditText comment_field;
     private ImageButton comment_post_btn;
     private TextView commentview;
+   // APICALLER objcommentcity= new APICALLER();
+  //  APICALLER objcommenthome= new APICALLER();
+   String content1="" ;
+    String comment1;
+    average objratehome =new average();
+    average objrate =new average();
+    String ratemachine;
+
 /***/
 private ListView mlist;
     List mhome = new ArrayList<String>();
@@ -96,12 +113,75 @@ private ListView mlist;
 
                 Map<String, Object> commentsMap = new HashMap<>();
                 commentsMap.put("Comment", comment_message);
-                commentsMap.put("user_id", firebaseUser.getUid());
+               // commentsMap.put("user_id", firebaseUser.getUid());
                 count++;
+                //objcommentcity.setComment(comment_message);
+             //objcommentcity.Machine();
+
+
+                Gson gson = new GsonBuilder()
+                        .setLenient()
+                        .create();
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://testapicore.conveyor.cloud/api/values/")
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .build();
+
+                jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
+
+                Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comment_message);
+
+                call.enqueue(new Callback<List<ApiModel>>() {
+
+                    @Override
+                    public void onResponse(Call<List<ApiModel>> call, Response<List<ApiModel>> response) {
+
+                        if (!response.isSuccessful()) {
+comment1+=response.code();
+                            comment_field.setText("Code: " + response.code());
+                            return;
+                        }
+
+                        List<ApiModel> posts = response.body();
+
+                        for (ApiModel post : posts) {
+
+                            //content = post.getCategory();
+                            content1 +=post.getCategory();
+                            //Reference.push().setValue( post.getCategory());
+                            int x= Integer.parseInt(content1);
+                            Double y= new Double(x);
+                           // comment_field.append(y);
+                            objrate.setX("Cairo");
+                            objrate.setY(blog_post_id);
+                            objrate.setAdd(y);
+                            objrate.rate();
+                            objratehome.setX("home");
+                            objratehome.setY(blog_post_id);
+                            objratehome.setAdd(y);
+                            objratehome.rate();
+                            return ;
+                            //textViewResult.append(content);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<ApiModel>> call, Throwable t) {
+                        comment_field.setText(t.getMessage());
+                        // Toast.makeText(com.somesh.android.bhopaldarshan.commentLuxor.this, "Comment added", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+                // objrate.setX("Cairo");
+                // objrate.setY(blog_post_id);
+                // objrate.setAdd(Double.parseDouble(ratemachine));
               //  x.setCoun(count);
-                Reference.push().setValue(commentsMap);
+               // commentsMap.put("xxx", content1);
+               Reference.push().setValue(commentsMap);
                 hooome.push().setValue(commentsMap);
-                comment_field.setText("");
+               comment_field.setText("");
                 Toast.makeText(Comments.this, "Comment added", Toast.LENGTH_SHORT).show();
                 /////*****////
 

@@ -1,8 +1,8 @@
 package com.somesh.android.bhopaldarshan;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class Alex_Details extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class Alex_Details extends AppCompatActivity {
     average obj=new average();
     average home=new average();
     ImageView AlexImage;
-    Button button ;
+    Button button1 ;
     Button mapButton,ratebutton ;
     TextView getcounteeer;
     ImageButton mvideoButton;
@@ -32,7 +31,7 @@ public class Alex_Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alex_details);
-        button=findViewById(R.id.addcomment);
+        button1=findViewById(R.id.addcomment);
         address=findViewById(R.id.drop1);
         about=findViewById(R.id.drop3);
         rate=findViewById(R.id.drop2);
@@ -57,7 +56,7 @@ public class Alex_Details extends AppCompatActivity {
        // Toast.makeText(getApplicationContext(),getData.getAddress(),Toast.LENGTH_SHORT).show();
         address.setText(getData.getAddress());
         about.setText(getData.getAbout());
-        rate.setText(getData.getRate());
+        rate.setText(""+(Math.round((Double.parseDouble(getData.getRate()))*1000.0)/1000.0));
         comments.setText(getData.getComments());
         websites.setText(getData.getWebsities());
         mapButton=findViewById(R.id.mapButton);
@@ -82,7 +81,7 @@ public class Alex_Details extends AppCompatActivity {
 
                 startActivity(intent);            }
         });
-        button.setOnClickListener((new View.OnClickListener() {
+        button1.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Alex_Details.this,commentAlex.class);

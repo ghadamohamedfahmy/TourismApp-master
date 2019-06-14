@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -42,7 +41,7 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
     public void onBindViewHolder(AlexAdapter.MyViewHolder holder, final int position) {
         // set the data in items
         GetData getData = mGetData.get(position);
-        holder.ratetext.setText(getData.getRate());
+        holder.ratetext.setText(""+(Math.round((Double.parseDouble(getData.getRate()))*1000.0)/1000.0));
       holder.placeTitle.setText(getData.getTitle());
        // Picasso.with(context).load(getData.getImageUrl()).into(holder.placeImage);
         //Toast.makeText(context, getData.getImageUrl(), Toast.LENGTH_LONG).show();

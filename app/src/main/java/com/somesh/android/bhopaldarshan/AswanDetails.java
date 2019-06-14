@@ -49,7 +49,7 @@ public class AswanDetails extends AppCompatActivity {
                 .into(AswanImage);
         address.setText(getDataAswan.getAddress());
         about.setText(getDataAswan.getAbout());
-        rate.setText(getDataAswan.getRate());
+        rate.setText(""+(Math.round((Double.parseDouble(getDataAswan.getRate()))*1000.0)/1000.0));
         comments.setText(getDataAswan.getComments());
         websites.setText(getDataAswan.getWebsities());
         mapButton=(Button) findViewById(R.id.mapButton);

@@ -1,9 +1,5 @@
 package com.somesh.android.bhopaldarshan;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,27 +11,42 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class APICALLER extends AppCompatActivity {
-    private TextView textViewResult;
-    private  String comment="i love it";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.api);
+public class APICALLER {
+  //  private TextView textViewResult;
+   // private  String comment="i love it";
+    String content ;
+    String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    // @Override
+    public void   Machine() {
+        // super.onCreate(savedInstanceState);
+        //setContentView(R.layout.api);
 
 
-        textViewResult = findViewById(R.id.text_view_result);
+        //textViewResult = findViewById(R.id.text_view_result);
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:4446")
+                .baseUrl("https://testapicore.conveyor.cloud/api/values/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
 
-        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts("/api/values/"+comment);
+        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comment);
 
         call.enqueue(new Callback<List<ApiModel>>() {
 
@@ -44,25 +55,28 @@ public class APICALLER extends AppCompatActivity {
 
                 if (!response.isSuccessful()) {
 
-                    textViewResult.setText("Code: " + response.code());
+                    //textViewResult.setText("Code: " + response.code());
                     return;
                 }
 
                 List<ApiModel> posts = response.body();
 
                 for (ApiModel post : posts) {
-                    String content = "";
+
+                    //content = post.getCategory();
                     content += "ID: " + post.getCategory() + "\n";
-
-
-                    textViewResult.append(content);
+                    return;
+                    //textViewResult.append(content);
                 }
             }
 
             @Override
             public void onFailure(Call<List<ApiModel>> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
+                //textViewResult.setText(t.getMessage());
+                // Toast.makeText(com.somesh.android.bhopaldarshan.commentLuxor.this, "Comment added", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
 }

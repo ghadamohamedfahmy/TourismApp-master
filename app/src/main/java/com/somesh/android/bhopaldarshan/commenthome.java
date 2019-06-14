@@ -21,17 +21,29 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class commenthome extends AppCompatActivity {
     private Toolbar commentToolbar;
 
     private EditText comment_field;
     private ImageButton comment_post_btn;
+    String content1="" ;
+    String comment1;
+    average objratehome =new average();
+    average objrate =new average();
     private TextView commentview;
     /***/
     private ListView mlist;
@@ -93,9 +105,53 @@ public class commenthome extends AppCompatActivity {
 
                 Map<String, Object> commentsMap = new HashMap<>();
                 commentsMap.put("Comment", comment_message);
-                commentsMap.put("user_id", firebaseUser.getUid());
+                //commentsMap.put("user_id", firebaseUser.getUid());
+                Gson gson = new GsonBuilder()
+                        .setLenient()
+                        .create();
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://testapicore.conveyor.cloud/api/values/")
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .build();
 
-                Reference.push().setValue(commentsMap);
+                jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
+
+                Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comment_message);
+
+                call.enqueue(new Callback<List<ApiModel>>() {
+
+                    @Override
+                    public void onResponse(Call<List<ApiModel>> call, Response<List<ApiModel>> response) {
+
+                        if (!response.isSuccessful()) {
+                            comment1+=response.code();
+                            comment_field.setText("Code: " + response.code());
+                            return;
+                        }
+                        List<ApiModel> posts = response.body();
+
+                        for (ApiModel post : posts) {
+
+                            content1 +=post.getCategory();
+                            int x= Integer.parseInt(content1);
+                            Double y= new Double(x);
+
+                            objratehome.setX("home");
+                            objratehome.setY(blog_post_id);
+                            objratehome.setAdd(y);
+                            objratehome.rate();
+                            return ;
+
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<ApiModel>> call, Throwable t) {
+                        comment_field.setText(t.getMessage());
+
+                    }
+                });
+
+               // Reference.push().setValue(commentsMap);
                 hooome.push().setValue(commentsMap);
                 comment_field.setText("");
                 Toast.makeText(com.somesh.android.bhopaldarshan.commenthome.this, "Comment added", Toast.LENGTH_SHORT).show();

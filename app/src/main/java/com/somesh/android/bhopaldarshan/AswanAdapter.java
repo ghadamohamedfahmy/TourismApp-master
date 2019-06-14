@@ -44,7 +44,7 @@ class AswanAdapter extends RecyclerView.Adapter<AswanAdapter.MyViewHolder> {
         //holder.placeTitle.setText((Integer) aswanlist.get(position));
         GetData getDataAswan = aswanlist.get(position);
         holder.placeTitle.setText(getDataAswan.getTitle());
-        holder.ratetext.setText(getDataAswan.getRate());
+        holder.ratetext.setText(""+(Math.round((Double.parseDouble(getDataAswan.getRate()))*1000.0)/1000.0));
         // loading album cover using Glide library
         Glide.with(context)
                 .load(getDataAswan.getImageUrl())

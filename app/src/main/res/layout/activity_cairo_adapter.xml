@@ -66,7 +66,7 @@
                 android:layout_marginTop="205dp"
                 android:layout_marginBottom="80dp"
                 android:hint="@string/retrievepass"
-                android:text="0 Comments"
+                android:text=" Comments"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent" />

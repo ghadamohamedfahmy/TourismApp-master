@@ -20,8 +20,8 @@
         style="@style/Widget.AppCompat.Light.ListView.DropDown"
         android:layout_width="match_parent"
 
-        android:layout_height="322dp"
-        android:layout_marginTop="60dp" />
+        android:layout_height="563dp"
+        android:layout_marginTop="150dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/comment_list"
@@ -40,7 +40,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="70dp"
         android:orientation="horizontal"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"

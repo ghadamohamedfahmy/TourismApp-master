@@ -49,7 +49,7 @@ public class homeDetails extends AppCompatActivity {
                 .into(LuxorImage);
         address.setText(gethomeData.getAddress());
         about.setText(gethomeData.getAbout());
-        rate.setText(gethomeData.getRate());
+        rate.setText(""+(Math.round((Double.parseDouble(gethomeData.getRate()))*1000.0)/1000.0));
         // comments.setText(getDataLuxor.getComments());
         websites.setText(gethomeData.getWebsities());
 

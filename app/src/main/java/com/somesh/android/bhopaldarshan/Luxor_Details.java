@@ -47,7 +47,7 @@ public class Luxor_Details extends AppCompatActivity {
                 .into(LuxorImage);
         address.setText(getDataLuxor.getAddress());
         about.setText(getDataLuxor.getAbout());
-        rate.setText(getDataLuxor.getRate());
+        rate.setText(""+(Math.round((Double.parseDouble(getDataLuxor.getRate()))*1000.0)/1000.0));
        // comments.setText(getDataLuxor.getComments());
         websites.setText(getDataLuxor.getWebsities());
 

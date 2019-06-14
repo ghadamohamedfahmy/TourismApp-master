@@ -51,7 +51,7 @@ public class Other_Details extends AppCompatActivity {
                 .into(OtherImage);
         address.setText(getDataOther.getAddress());
         about.setText(getDataOther.getAbout());
-        rate.setText(getDataOther.getRate());
+        rate.setText(""+(Math.round((Double.parseDouble(getDataOther.getRate()))*1000.0)/1000.0));
         comments.setText(getDataOther.getComments());
         websites.setText(getDataOther.getWebsities());
         mvideoButton = findViewById(R.id.videoButton);

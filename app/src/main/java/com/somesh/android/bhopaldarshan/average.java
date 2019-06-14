@@ -1,14 +1,7 @@
 package com.somesh.android.bhopaldarshan;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +15,7 @@ public class average {
     private static final String TAG = "Cairo";
     ProgressBar progressBar;
       String avg;
+    double xx;
    private  double sum,count,add=5;
      private String x,y,z;
 
@@ -79,7 +73,9 @@ public class average {
                 mDatabase.setValue(String.valueOf(sum));
                 mDatabase = FirebaseDatabase.getInstance().getReference("/" + x + "/" + y + "/rate");
                 //Database=mmDatabase.getReference("/Cairo/El-azhar-park/counter");
-                avg = String.valueOf(sum / count);
+                xx= Math.round((sum / count)*1000.0)/1000.0;
+                avg = String.valueOf(xx);
+
                 mDatabase.setValue(String.valueOf(avg));
 
             }
