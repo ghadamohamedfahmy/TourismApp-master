@@ -12,7 +12,7 @@ public interface jsonAPI {
 
 
     public interface JsonPlaceHolderApi {
-       String comment=ss.getComment();
+
 
         @GET
         Call<List<ApiModel>> getPosts(@Url String url) ;

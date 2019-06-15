@@ -40,6 +40,7 @@ class AlexAdapter extends RecyclerView.Adapter<AlexAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(AlexAdapter.MyViewHolder holder, final int position) {
         // set the data in items
+
         GetData getData = mGetData.get(position);
         holder.ratetext.setText(""+(Math.round((Double.parseDouble(getData.getRate()))*1000.0)/1000.0));
       holder.placeTitle.setText(getData.getTitle());

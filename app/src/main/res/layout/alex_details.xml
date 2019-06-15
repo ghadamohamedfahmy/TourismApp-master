@@ -181,22 +181,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/drop5" />
 
-            <Button
-                android:id="@+id/addcomment"
-                android:layout_width="61dp"
-                android:layout_height="57dp"
-                android:layout_weight="1"
-                android:background="@drawable/comment"
-                android:onClick="@string/addcomment"
-                android:scaleType="centerInside"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.117"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/mapButton"
-                tools:ignore="NotSibling" />
-
             <TextView
                 android:id="@+id/enterco"
                 android:layout_width="wrap_content"
@@ -238,6 +222,22 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <Button
+                android:id="@+id/addcomment"
+                android:layout_width="61dp"
+                android:layout_height="57dp"
+                android:layout_weight="1"
+                android:background="@drawable/comment"
+                android:onClick="@string/addcomment"
+                android:scaleType="centerInside"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.117"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mapButton"
+                tools:ignore="NotSibling" />
 
             <TextView
                 android:id="@+id/textView"

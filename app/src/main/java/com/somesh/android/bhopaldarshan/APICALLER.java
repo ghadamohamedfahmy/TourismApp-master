@@ -64,7 +64,7 @@ public class APICALLER {
                 for (ApiModel post : posts) {
 
                     //content = post.getCategory();
-                    content += "ID: " + post.getCategory() + "\n";
+                    content +=  post.getCategory() ;
                     return;
                     //textViewResult.append(content);
                 }

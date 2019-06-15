@@ -231,6 +231,8 @@ logout.setOnClickListener(new View.OnClickListener() {
         myAdapter = new homeadapter(com.somesh.android.bhopaldarshan.home.this, mhome);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         myRecyclerView.setLayoutManager(linearLayoutManager);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         myRecyclerView.setAdapter(myAdapter);
         mProgressCircle.setVisibility(View.INVISIBLE);
     }

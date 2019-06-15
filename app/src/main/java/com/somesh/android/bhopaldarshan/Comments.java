@@ -137,7 +137,7 @@ private ListView mlist;
                     public void onResponse(Call<List<ApiModel>> call, Response<List<ApiModel>> response) {
 
                         if (!response.isSuccessful()) {
-comment1+=response.code();
+                            comment1+=response.code();
                             comment_field.setText("Code: " + response.code());
                             return;
                         }

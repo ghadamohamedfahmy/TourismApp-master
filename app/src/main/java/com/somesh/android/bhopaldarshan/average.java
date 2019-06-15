@@ -67,14 +67,14 @@ public class average {
             public void onDataChange(DataSnapshot snapshot) {
                 sum = Double.parseDouble(snapshot.getValue().toString());
                 sum = sum + add;
-
-                mDatabase = FirebaseDatabase.getInstance().getReference("/" + x + "/" + y + "/sum");
-                //Database=mmDatabase.getReference("/Cairo/El-azhar-park/counter");
-                mDatabase.setValue(String.valueOf(sum));
-                mDatabase = FirebaseDatabase.getInstance().getReference("/" + x + "/" + y + "/rate");
-                //Database=mmDatabase.getReference("/Cairo/El-azhar-park/counter");
                 xx= Math.round((sum / count)*1000.0)/1000.0;
                 avg = String.valueOf(xx);
+                mDatabase = FirebaseDatabase.getInstance().getReference("/" + x + "/" + y + "/sum");
+                //Database=mmDatabase.getReference("/Cairo/El-azhar-park/counter");
+                mDatabase.setValue(String.valueOf(avg));
+                mDatabase = FirebaseDatabase.getInstance().getReference("/" + x + "/" + y + "/rate");
+                //Database=mmDatabase.getReference("/Cairo/El-azhar-park/counter");
+
 
                 mDatabase.setValue(String.valueOf(avg));
 

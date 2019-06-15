@@ -24,7 +24,7 @@ public class Alex_Details extends AppCompatActivity {
     Button mapButton,ratebutton ;
     TextView getcounteeer;
     ImageButton mvideoButton;
-   private int counter=0;
+   private Double counter=0.0;
     LinearLayout linearLayout;
 
     @Override
@@ -95,21 +95,23 @@ public class Alex_Details extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                obj.setX("Alex");
-                obj.setY(getData.getName());
-                obj.setAdd(Double.parseDouble(getData.getRate()));
-                obj.rate();
-                home.setX("home");
-                home.setY(getData.getName());
-                home.setAdd(Double.parseDouble(getData.getRate()));
-                home.rate();
-                counter++;
+              counter++;
                 if(counter<=10&&counter>0) {
                     getcounteeer.setText(counter + "");
                 }else{ getcounteeer.setText(" that's enough for rate 10");}
+                obj.setX("Alex");
+                obj.setY(getData.getName());
+                obj.setAdd(counter);
+                obj.rate();
+                home.setX("home");
+                home.setY(getData.getName());
+                home.setAdd(counter);
+                home.rate();
             }
         });
+
+
+
     }
 
 }

@@ -9,13 +9,7 @@ public class ApiModel {
         return category;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
-    public String getComment() {
-        return comment;
-    }
 
     public String getCategory() {
         return category;
