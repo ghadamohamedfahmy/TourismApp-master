@@ -16,7 +16,7 @@ public class average {
     ProgressBar progressBar;
       String avg;
     double xx;
-   private  double sum,count,add=5;
+   private  double sum,count,add;
      private String x,y,z;
 
     public void setX(String x) {
@@ -33,7 +33,19 @@ public class average {
         this.add = add;
     }
 
-   /* public String getX() {
+    public double getSum() {
+        return sum;
+    }
+
+    public double getCount() {
+        return count;
+    }
+
+    public double getAdd() {
+        return add;
+    }
+
+/* public String getX() {
         return x;
     }
 

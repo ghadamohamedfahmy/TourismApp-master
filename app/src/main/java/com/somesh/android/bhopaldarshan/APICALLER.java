@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APICALLER {
   //  private TextView textViewResult;
    // private  String comment="i love it";
-    String content ;
+    String content="8";
     String comment;
 
     public String getComment() {
@@ -30,23 +30,23 @@ public class APICALLER {
     }
 
     // @Override
-    public void   Machine() {
+    public String   Machine(String url,String comm) {
         // super.onCreate(savedInstanceState);
         //setContentView(R.layout.api);
-
+        //
 
         //textViewResult = findViewById(R.id.text_view_result);
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://testapicore.conveyor.cloud/api/values/")
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         jsonAPI.JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(jsonAPI.JsonPlaceHolderApi.class);
 
-        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comment);
+        Call<List<ApiModel>> call = jsonPlaceHolderApi.getPosts(comm);
 
         call.enqueue(new Callback<List<ApiModel>>() {
 
@@ -55,7 +55,7 @@ public class APICALLER {
 
                 if (!response.isSuccessful()) {
 
-                    //textViewResult.setText("Code: " + response.code());
+
                     return;
                 }
 
@@ -64,7 +64,8 @@ public class APICALLER {
                 for (ApiModel post : posts) {
 
                     //content = post.getCategory();
-                    content +=  post.getCategory() ;
+                    content +=post.getCategory() ;
+
                     return;
                     //textViewResult.append(content);
                 }
@@ -72,11 +73,12 @@ public class APICALLER {
 
             @Override
             public void onFailure(Call<List<ApiModel>> call, Throwable t) {
+
                 //textViewResult.setText(t.getMessage());
                 // Toast.makeText(com.somesh.android.bhopaldarshan.commentLuxor.this, "Comment added", Toast.LENGTH_SHORT).show();
             }
         });
-
+return  content;
     }
 
 }
